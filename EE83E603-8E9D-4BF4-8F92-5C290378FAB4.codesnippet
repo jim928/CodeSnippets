@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>gradient-color</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>CAGradientLayer *gradient = [CAGradientLayer layer];
+gradient.startPoint = CGPointMake(0, 0);
+gradient.endPoint = CGPointMake(1, 0);
+gradient.frame =CGRectMake(0,0,ScreenWith,50);
+gradient.colors = @[(id)color_FF9124.CGColor,(id)color_F7B500.CGColor];
+[bg.layer insertSublayer:gradient atIndex:0];
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>EE83E603-8E9D-4BF4-8F92-5C290378FAB4</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>添加颜色渐变</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>gradient-color</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

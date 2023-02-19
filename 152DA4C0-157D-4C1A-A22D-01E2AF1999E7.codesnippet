@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>classinit-example-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>class AccountItem: NSObject {
+    required init?(coder aDecoder: NSCoder) {
+        self.loginName = aDecoder.decodeObject(forKey: "loginName") as? String
+    }
+    func encode(with aCoder: NSCoder)
+    {
+        aCoder.encode(self.loginName, forKey: "loginName")
+    }
+    override init() {
+        super.init()
+    }
+    convenience init(name:String) {
+        self.init()
+        self.loginName = name
+    }
+    var loginName : String!
+}
+//guard let data = UserDefaults.standard.data(forKey: kAccountListKey) else { return nil }
+//let array = NSKeyedUnarchiver.unarchiveObject(with: data) as! [AccountItem]
+//let data = NSKeyedArchiver.archivedData(withRootObject: array)
+//UserDefaults.standard.set(data, forKey: kAccountListKey)
+//UserDefaults.standard.synchronize()
+/*
+extension UserDefaults {
+    static func itemForFileName(fileName:String) -&gt; PlayItem? {
+        guard let data = UserDefaults.standard.object(forKey: fileName) as? Data else { return nil }
+        return try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(data) as? PlayItem
+    }
+}
+extension PlayItem {
+    func saveToUserDefault(){
+        let data = try? NSKeyedArchiver.archivedData(withRootObject: self, requiringSecureCoding: false)
+        UserDefaults.standard.set(data, forKey: self.fileName)
+        UserDefaults.standard.synchronize()
+    }
+}
+*/</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>152DA4C0-157D-4C1A-A22D-01E2AF1999E7</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>object定义</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>classinit-example-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

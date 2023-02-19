@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>viewshape</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//将view外形配置为image的外形，注意image要设置好拉伸
+UIImage *shape = [UIImage imageNamed:&lt;#imgName#&gt;];
+    UIImageView *shapeImgView = [[UIImageView alloc] init];
+    [shapeImgView setFrame:&lt;#view#&gt;.frame];
+    [shapeImgView setImage:shape];
+    CALayer *layer = shapeImgView.layer;
+    layer.frame = (CGRect){{0,0},shapeImgView.layer.frame.size};
+    &lt;#view#&gt;.layer.mask = layer;
+    [&lt;#view#&gt; setNeedsDisplay];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>0B0DF641-91B5-4B0D-AF29-63755C584384</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>viewshape</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

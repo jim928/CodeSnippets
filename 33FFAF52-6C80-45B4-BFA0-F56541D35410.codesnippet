@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>openurl</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>if (@available(iOS 10.0, *)) {
+                                    [ [UIApplication sharedApplication] openURL:[NSURL URLWithString:updateVersion.appDownUrl] options:@{} completionHandler:^(BOOL success) {
+                                        
+                                    }];
+                                } else {
+                                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:updateVersion.appDownUrl]];
+                                }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>33FFAF52-6C80-45B4-BFA0-F56541D35410</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>openurl</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

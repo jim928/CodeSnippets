@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>collectionview</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#pragma mark - collectionView
+//cell间距 行间距在xib即可设置 &lt;UICollectionViewDataSource,UICollectionViewDelegate&gt;
+/*
+UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
+layout.minimumLineSpacing = 0;
+layout.minimumInteritemSpacing = 0;
+layout.sectionInset = UIEdgeInsetsMake(5, 10, 0, 10);//指定section的上下左右边距
+collectionView = [[UICollectionView alloc]initWithFrame:CGRectZero collectionViewLayout:layout];
+ collectionView.delegate = self;
+ collectionView.dataSource = self;
+ collectionView.backgroundColor = [UIColor whiteColor];
+*/
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView{
+    return &lt;#1#&gt;;
+}
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    return &lt;#5#&gt;;
+}
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath{
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    return CGSizeMake(&lt;#CGFloat width#&gt;, &lt;#CGFloat height#&gt;)
+}
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *cellIdentifier = @"&lt;#cell#&gt;";
+    UINib *nib = [UINib nibWithNibName:@"&lt;#cell#&gt;" bundle: [NSBundle mainBundle]];
+    [collectionView registerNib:nib forCellWithReuseIdentifier:cellIdentifier];
+    &lt;#cell#&gt; *cell = [collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    return cell;
+}
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>F4F2BB4B-9E50-429F-B404-6D1CDCD004FB</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>collectionview</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

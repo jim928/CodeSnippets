@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>popview-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>import Foundation
+import UIKit
+import SightKit
+
+class &lt;#LoginPopView#&gt;: UIView {
+    required init?(coder aDecoder: NSCoder) { fatalError("init(coder:) has not been implemented") }
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        buildViews()
+    }
+    
+    var bg:UIView = UIView()
+    var cView:UIView = UIView()
+    func buildViews() {
+        bg.addTo(self).wBgColor(.black).csFullfill()
+        bg.alpha = 0
+        
+        let dismissBtn = UIButton().addTo(self).csFullfill()
+        dismissBtn.addTarget(self, action: #selector(removeAnimation), for: .touchUpInside)
+        
+        cView.addTo(self).wBgColor(.white).csCenter().csWidthHeight(300)
+        cView.alpha = 0
+        
+        makeContent()
+        
+        showAnimation()
+    }
+    func makeContent(){
+        
+    }
+    @objc func showAnimation(){
+        UIView.animate(withDuration: 0.25) {
+            self.bg.alpha = 0.3
+            self.cView.alpha = 1
+        }
+    }
+    @objc func removeAnimation(){
+        UIView.animate(withDuration: 0.25, animations: {
+            self.bg.alpha = 0;
+            self.cView.alpha = 0;
+        }) { (finish) in
+            self.removeFromSuperview()
+        }
+    }
+    
+    @discardableResult static func show() -&gt; Self{
+        guard let fromView = UIApplication.shared.keyWindow else {
+            print("cannot make toast for there is no fatherView or window")
+            return Self()
+        }
+        
+        let tagForPopView = &lt;#2020120#&gt;
+        //防止重复添加
+        if let existView = fromView.viewWithTag(tagForPopView) {
+            existView.removeFromSuperview()
+        }
+        
+        let popView = Self().addTo(fromView).csFullfill()
+        popView.tag = tagForPopView
+        return popView
+    }
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>F782E774-34F4-4C53-8F39-961AAD2D9586</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>popview-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

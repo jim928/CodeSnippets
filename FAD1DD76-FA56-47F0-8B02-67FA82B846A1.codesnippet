@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>result-example-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>switch result {
+case .success(let image):
+    print(image)
+case .failure(let networkError):
+    switch networkError {
+    case .invalidUrl:
+        print(networkError)
+    case .requestFailed(let error):
+        print(networkError, error)
+    case .invalidData:
+        print(networkError)
+    case .invalidResponse:
+        print(networkError)
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>FAD1DD76-FA56-47F0-8B02-67FA82B846A1</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>result-example-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

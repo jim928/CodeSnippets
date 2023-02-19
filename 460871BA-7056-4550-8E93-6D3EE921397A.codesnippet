@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>button-img-to-right</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>btn.contentEdgeInsets = UIEdgeInsetsMake(-1000,-1000, -1000, -1000);
+CGFloat space = 5;
+CGFloat halfSpace = (space / 2.0);
+CGFloat imageWidth = btn.currentImage.size.width;
+CGFloat edgeWidth = btn.titleLabel.intrinsicContentSize.width;
+btn.titleEdgeInsets = UIEdgeInsetsMake(0, -imageWidth - halfSpace, 0, imageWidth + halfSpace);
+btn.imageEdgeInsets = UIEdgeInsetsMake(0, edgeWidth + halfSpace, 0, -edgeWidth - halfSpace);</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>460871BA-7056-4550-8E93-6D3EE921397A</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>调整按钮的图片位置到文字的右边</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>button-img-to-right</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

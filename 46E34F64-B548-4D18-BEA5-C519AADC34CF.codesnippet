@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>rtf-to-attributed-string-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>func loadRTF(from resource: String) -&gt; NSAttributedString? {
+        guard let url = Bundle.main.url(forResource: resource, withExtension: "rtf") else { return nil }
+        guard let data = try? Data(contentsOf: url) else { return nil }
+        return try? NSAttributedString(data: data,
+                                       options: [NSAttributedString.DocumentReadingOptionKey.documentType: NSAttributedString.DocumentType.rtf],
+                                       documentAttributes: nil)
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>46E34F64-B548-4D18-BEA5-C519AADC34CF</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>读取富文本为NSAttributedString</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>rtf-to-attributed-string-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

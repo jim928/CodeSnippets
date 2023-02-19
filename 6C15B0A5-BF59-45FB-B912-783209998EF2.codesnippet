@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>how-to-create-swift-package-manager</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>如何创建swift package manager 并支持pod
+1，打开Xcode，新建swift package manager 并命名 libname。
+2，打开终端，cd到 libname文件夹下， 执行如下命令来生成Xcode工程。
+swift package generate-xcodeproj
+3，打开libname.xcodeproj，将外部新建的或者已有的 libname.podspec 文件拖入工程，确保文件也复制到工程根目录下。
+4，修改libname.podspec里的编译文件路径配置为：s.source_files = 'Sources/**/*'
+5，点击project，分别添加Example_iOS和Example_macOS两个target 作为两个平台的测试target。
+6，在 New Scheme里分别添加 Example_iOS和Example_macOS两个运行项。
+7，在Example_iOS和Example_macOS里的 General-》Frameworks,Libraries,and Embedded Content 里添加 libname.framework库引用之后，即可调试。
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>6C15B0A5-BF59-45FB-B912-783209998EF2</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>如何创建SPM并支持pod</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>drawrect-circle-filled</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>    //填充圆，无边框
+    CGContextSetRGBFillColor (context,  0, 1, 1, 1.0);//设置填充颜色
+    CGContextAddArc(context, 150, 130, 30, 0, 2*M_PI, 0); //添加一个圆
+    CGContextDrawPath(context, kCGPathFill);//绘制填充
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>E97321DE-4FE3-43D5-8B34-6D091511259E</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>drawrect-circle-filled</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

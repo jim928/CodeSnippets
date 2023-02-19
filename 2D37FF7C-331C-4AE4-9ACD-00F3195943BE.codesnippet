@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>SKStackView-example-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>struct Person {
+    var age = 0
+}
+let v = SKStackView&lt;Person&gt;().addTo(self.view).csCenterY().csFullfillHorizontal().wBgColor(.lightGray)
+v.updateWith(array: [Person(age: 1),Person(age: 2),Person(age: 3)],direction: .vertical, widthHeight: 50, option: .multi) { (p, v, index, select) in
+    let label = v.viewWithTag(tag: 100) { () -&gt; UIView in
+        return UILabel().wFeatures(pfr12,UIColor.black,NSTextAlignment.center,v,"\(p.age)").csFullfill().wTag(100)
+    }
+    label.backgroundColor = select ? .red : .blue
+} select: { (array) in
+    print(array)
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>2D37FF7C-331C-4AE4-9ACD-00F3195943BE</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>SKStackView-example-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>SKNoticeBar-example</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>SKNoticeBar.height = 30
+let noticeBar = SKNoticeBar().addTo(self.view).csHeight(SKNoticeBar.height).csCenterY().csFullfillHorizontal()
+noticeBar.noticesArray = ["SightKit is a fast development kit for iOS,it saves a lot of work time, it is great!","SightKit 是一个快速开发库，可以极大的加快开发速度。"]
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>02CAB0FF-0564-4A5C-8812-990201B4308B</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>SKNoticeBar-example</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>extension-property</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>private struct SwiftCustomProperties{
+        static var &lt;#uniqueID#&gt;:String? = nil
+    }
+    
+    var &lt;#uniqueID#&gt;:String?{
+        get {
+            return objc_getAssociatedObject(self, &amp;SwiftCustomProperties.&lt;#uniqueID#&gt;) as? String
+        }
+        set {
+            if let unwrappedValue = newValue {
+                objc_setAssociatedObject(self, &amp;SwiftCustomProperties.&lt;#uniqueID#&gt;, unwrappedValue as String?, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            }
+        }
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>2947114C-7BE7-4504-87B9-2350305A8A90</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>extension-property</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

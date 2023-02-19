@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>codeing-nsuserdefault</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>/*
+ &lt;NSCoding&gt;
+ NSData *data = [[NSUserDefaults standardUserDefaults]dataForKey:key];
+ self.accounts = [NSMutableArray arrayWithArray:[NSKeyedUnarchiver unarchiveObjectWithData:data]];
+ 
+ NSData *data = [NSKeyedArchiver archivedDataWithRootObject:array];
+ [[NSUserDefaults standardUserDefaults]setObject:data forKey:key];
+ */
+- (instancetype)initWithCoder:(NSCoder *)aDecoder{
+    self = [super init];
+    if (self) {
+        self.&lt;#property#&gt; = [aDecoder decodeObjectForKey:@"&lt;#property#&gt;"];
+    }
+    return self;
+}
+- (void)encodeWithCoder:(NSCoder *)coder
+{
+    [coder encodeObject:self.&lt;#property#&gt; forKey:@"&lt;#property#&gt;"];
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>F835CFF7-F5F0-4339-8C5B-C28C73242067</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>存储自定义对象-实现coding协议</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>coding-nsuserdefault</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

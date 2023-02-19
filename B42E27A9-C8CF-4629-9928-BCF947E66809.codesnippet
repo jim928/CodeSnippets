@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>sortObjects</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>NSArray *tmpArray = [&lt;#ObjectArray#&gt; sortedArrayUsingComparator:^NSComparisonResult(&lt;#elementClass#&gt; *obj1, &lt;#elementClass#&gt; *obj2) {
+    //如果 compareProperty 是 int型 ，将它转成 NSNumber 类型即可
+        NSComparisonResult result = [obj1.&lt;#comparedProperty#&gt; compare:obj2.&lt;#comparedProperty#&gt;];
+        return result;
+    }];
+//现在是 时间由小到大 也就是 从旧到新排列 要反转一次
+&lt;#objects#&gt; = [NSMutableArray arrayWithArray:[[tmpArray reverseObjectEnumerator]allObjects]];
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>B42E27A9-C8CF-4629-9928-BCF947E66809</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>对象排序(sortObjects)</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

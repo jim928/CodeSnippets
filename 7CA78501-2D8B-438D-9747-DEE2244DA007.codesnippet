@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>isfirstinstal</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>+(BOOL)isFirstInstal{
+    BOOL hasCalledThisMethod = [[NSUserDefaults standardUserDefaults]boolForKey:@"hasCalledThisMethodKey"];
+    if (!hasCalledThisMethod) {
+        [[NSUserDefaults standardUserDefaults]setBool:YES forKey:@"hasCalledThisMethodKey"];
+        return YES;
+    }
+    return NO;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>7CA78501-2D8B-438D-9747-DEE2244DA007</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>判断是不是首次安装app(isfirstinstal)</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

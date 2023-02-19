@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>qrcode</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (UIImage *)generateQRCode:(NSString *)code width:(CGFloat)width height:(CGFloat)height {
+    CIImage *qrcodeImage;
+    NSData *data = [code dataUsingEncoding:NSUTF8StringEncoding allowLossyConversion:false];
+    CIFilter *filter = [CIFilter filterWithName:@"CIQRCodeGenerator"];
+    
+    [filter setValue:data forKey:@"inputMessage"];
+    [filter setValue:@"H" forKey:@"inputCorrectionLevel"];
+    qrcodeImage = [filter outputImage];
+    
+    // 消除模糊
+    CGFloat scaleX = width / qrcodeImage.extent.size.width; // extent 返回图片的frame
+    CGFloat scaleY = height / qrcodeImage.extent.size.height;
+    CIImage *transformedImage = [qrcodeImage imageByApplyingTransform:CGAffineTransformScale(CGAffineTransformIdentity, scaleX, scaleY)];
+    
+    return [UIImage imageWithCIImage:transformedImage];
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>972CC7DB-7FA2-450C-9DE1-73FD10F0371F</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>qrcode</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>drawrect-text</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>    // 文本属性
+    NSMutableDictionary *textAttributes = [[NSMutableDictionary alloc] init];
+    [textAttributes setValue:[UIFont fontWithName:@"PingFangSC-Semibold" size:15] forKey: NSFontAttributeName];
+    [textAttributes setValue:[UIColor clearColor] forKey:NSBackgroundColorAttributeName];
+    [textAttributes setValue:UIColor.greenColor forKey:NSForegroundColorAttributeName];
+    [@"画圆：" drawInRect:CGRectMake(10, 120, 80, 20) withAttributes:textAttributes];
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>6C7038D1-C24D-4824-9E8B-8E53237C27EA</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>drawrect-text</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>SKTitleView-example</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>let sView = SKTitleView().addTo(self.view).csCenterY().csFullfillHorizontal().csHeight(60)
+sView.setTitles(titles: ["btn1","btn2","btn3","btn4","btn5","btn6","btn7","btn7","btn7","btn7","btn7","btn7","btn7","btn7","btn7"], selectIndex: 2, titleBtnConfig: { (btn, text, index) in
+    btn.wFeatures(UIColor.black,pfr12)
+    btn.setTitleColor(.green, for: .selected)
+}) { (index) in
+    print(index)
+}
+
+sView.addLeftBtn(width: 80, configBtn: { (btn) in
+    btn.wFeatures("btn",UIColor.red,pfr14)
+}, tapClosure: { (btn) in
+    print("left tap")
+})
+
+sView.addRightView(width: 50) { (rightView) in
+    rightView.backgroundColor = .red
+        }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>A92F4049-5AA8-44F2-B6F1-6702E52672FF</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>SKTitleView-example</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

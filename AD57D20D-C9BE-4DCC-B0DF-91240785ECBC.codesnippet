@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>quickTextField-make-method-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>func quickTextFeild(leftImgName:String,placeHolder:String,rightImgName:String?,rightHLImgName:String?) -&gt;(UIView,UITextField,UIButton){
+    let value:CGFloat = 44
+    let view = UIView()
+    view.corner(radius: value/2)
+    UIView().wBgColor(UIColor.init(red: 0, green: 0, blue: 14/255.0, alpha: 0.5)).addTo(view).csFullfill()
+    let textField = UITextField().wTextColor(.white).wFont(pfm14).wPlaceholder(text: placeHolder, color: UIColor.white.withAlphaComponent(0.3), font: pfm14).addTo(view).csFullfill()
+    
+    textField.wLeftView(view: leftImgName.toImgView(), width: value, fillWay: .center)
+    
+    let rightBtn = UIButton()
+    if let rightImgName = rightImgName {
+        rightBtn.wImg(rightImgName)
+        textField.wRightView(view: rightBtn, width: value, fillWay: .fullFill)
+    }
+    if let rightHLImgName = rightHLImgName {
+        rightBtn.wSelectedImg(rightHLImgName)
+    }
+    return (view,textField,rightBtn)
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>AD57D20D-C9BE-4DCC-B0DF-91240785ECBC</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>quickTextField-make-method-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

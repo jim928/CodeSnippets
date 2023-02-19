@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>image-with-color</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>+ (UIImage *)imageWithColor:(UIColor *)color {
+   CGRect rect = CGRectMake(0.0f, 0.0f, 1.0f, 1.0f);
+   UIGraphicsBeginImageContext(rect.size);
+   CGContextRef context = UIGraphicsGetCurrentContext();
+   CGContextSetFillColorWithColor(context, [color CGColor]);
+   CGContextFillRect(context, rect);
+   UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+   UIGraphicsEndImageContext();
+
+   return image;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>9F84B0DD-656F-4A33-9AC7-B6F580571053</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>image-with-color</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

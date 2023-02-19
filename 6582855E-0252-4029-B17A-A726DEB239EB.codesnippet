@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>scrollView-scroll-direction-detect</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGPoint translatedPoint = [scrollView.panGestureRecognizer translationInView:scrollView];
+    if(translatedPoint.y &lt; 0){
+        NSLog(@"上滑");
+    }
+    if(translatedPoint.y &gt; 0){
+        NSLog(@"下滑");
+    }
+    //通过translatedPoint.x 判断左右滑动方向
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>6582855E-0252-4029-B17A-A726DEB239EB</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>scrollView滑动方向判断</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>scrollView-scroll-direction-detect</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

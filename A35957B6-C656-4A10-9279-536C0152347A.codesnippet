@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>template-BaseVC-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>import UIKit
+
+class BaseVC: UIViewController {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        self.view.backgroundColor = .white
+        
+        if let nav = self.navigationController{
+            if self != nav.viewControllers.first {
+                let leftBtn = UIButton(type: .custom)
+                leftBtn.frame = CGRect(x: 0, y: 0, width: 60, height: 44)
+                leftBtn.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+                let backImg = "back".toImgView()
+                backImg.frame = CGRect(x: -10, y: 5, width: 34, height: 34) //根据图片调整位置大小
+                leftBtn.addSubview(backImg)
+                backImg.contentMode = .scaleAspectFit
+                let leftBarBtn = UIBarButtonItem(customView: leftBtn)
+                self.navigationItem.leftBarButtonItem = leftBarBtn
+            }
+        }
+    }
+    @objc func backAction(){
+        self.navigationController?.popViewController(animated: true)
+    }
+    
+    //旋转到横屏
+    func rotateToLanscap() -&gt; Void {
+        currentScreenOritation = UIInterfaceOrientationMask.landscapeRight
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.blockRotation = UIInterfaceOrientationMask.landscapeRight
+        
+        let value = UIInterfaceOrientation.landscapeLeft.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+    }
+    
+    //旋转到竖屏
+    func rotateToPortrait() -&gt; Void {
+        currentScreenOritation = UIInterfaceOrientationMask.portrait
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.blockRotation = UIInterfaceOrientationMask.portrait
+        
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+    }
+    
+    //旋转到竖屏 支持横竖屏
+    func rotateToAll() -&gt; Void {
+        currentScreenOritation = UIInterfaceOrientationMask.all
+        
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.blockRotation = UIInterfaceOrientationMask.all
+        
+        let value = UIInterfaceOrientation.portrait.rawValue
+        UIDevice.current.setValue(value, forKey: "orientation")
+    }
+}
+/*
+ 在AppDelegate里添加如下：
+ var currentScreenOritation = UIInterfaceOrientationMask.portrait
+
+ @UIApplicationMain
+ class AppDelegate: UIResponder, UIApplicationDelegate {
+
+     var window: UIWindow?
+     var blockRotation = UIInterfaceOrientationMask.portrait
+
+     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -&gt; UIInterfaceOrientationMask {
+         return blockRotation
+     }
+ }
+ 
+ 在push或present的vc里 添加下面的调用
+override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    rotateToLanscap()
+}
+override func viewDidDisappear(_ animated: Bool) {
+    super.viewDidDisappear(animated)
+    rotateToPortrait()
+}
+*/</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>A35957B6-C656-4A10-9279-536C0152347A</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>template-BaseVC-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

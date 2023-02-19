@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>wkwebview</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//    //&lt;WKNavigationDelegate, WKUIDelegate&gt;
+//    _webView = [[WKWebView alloc]init];
+//    [self.view addSubview:_webView];
+//    _webView.translatesAutoresizingMaskIntoConstraints = NO;
+//    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-0-[v1]-0-|" options:0 metrics:nil views:@{@"v1":_webView}]];
+//    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-0-[v1]-0-|" options:0 metrics:nil views:@{@"v1":_webView}]];
+//    _webView.UIDelegate = self;
+//    _webView.navigationDelegate = self;
+//
+//    self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 20, [[UIScreen mainScreen] bounds].size.width, 2)];
+//    self.progressView.backgroundColor = [UIColor blueColor];
+//    //设置进度条的高度，下面这句代码表示进度条的宽度变为原来的1倍，高度变为原来的1.5倍.
+//    self.progressView.transform = CGAffineTransformMakeScale(1.0f, 1.5f);
+//    [self.view addSubview:self.progressView];
+//    [_webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
+//
+//    [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.baidu.com"]]];
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary&lt;NSString *,id&gt; *)change context:(void *)context {
+    if ([keyPath isEqualToString:@"estimatedProgress"]) {
+        self.progressView.progress = _webView.estimatedProgress;
+        if (self.progressView.progress == 1) {
+            /*
+             *添加一个简单的动画，将progressView的Height变为1.4倍，在开始加载网页的代理中会恢复为1.5倍
+             *动画时长0.25s，延时0.3s后开始动画
+             *动画结束后将progressView隐藏
+             */
+            __weak typeof (self)weakSelf = self;
+            [UIView animateWithDuration:0.25f delay:0.3f options:UIViewAnimationOptionCurveEaseOut animations:^{
+                weakSelf.progressView.transform = CGAffineTransformMakeScale(1.0f, 1.4f);
+            } completion:^(BOOL finished) {
+                weakSelf.progressView.hidden = YES;
+                
+            }];
+        }
+    }else{
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
+}
+#pragma mark - WKNavigationDelegate
+
+/**
+ *  页面开始加载时调用
+ *
+ *  @param webView    实现该代理的webview
+ *  @param navigation 当前navigation
+ */
+- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
+    
+    NSLog(@"%s", __FUNCTION__);
+}
+
+/**
+ *  当内容开始返回时调用
+ *
+ *  @param webView    实现该代理的webview
+ *  @param navigation 当前navigation
+ */
+- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
+    
+    NSLog(@"%s", __FUNCTION__);
+}
+
+/**
+ *  页面加载完成之后调用
+ *
+ *  @param webView    实现该代理的webview
+ *  @param navigation 当前navigation
+ */
+- (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
+    
+    NSLog(@"%s", __FUNCTION__);
+}
+
+/**
+ *  加载失败时调用
+ *
+ *  @param webView    实现该代理的webview
+ *  @param navigation 当前navigation
+ *  @param error      错误
+ */
+- (void)webView:(WKWebView *)webView didFailProvisionalNavigation:(WKNavigation *)navigation withError:(NSError *)error {
+    
+    NSLog(@"%s", __FUNCTION__);
+}
+
+/**
+ *  接收到服务器跳转请求之后调用
+ *
+ *  @param webView      实现该代理的webview
+ *  @param navigation   当前navigation
+ */
+- (void)webView:(WKWebView *)webView didReceiveServerRedirectForProvisionalNavigation:(WKNavigation *)navigation {
+    
+    NSLog(@"%s", __FUNCTION__);
+}
+
+/**
+ *  在收到响应后，决定是否跳转
+ *
+ *  @param webView            实现该代理的webview
+ *  @param navigationResponse 当前navigation
+ *  @param decisionHandler    是否跳转block
+ */
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationResponse:(WKNavigationResponse *)navigationResponse decisionHandler:(void (^)(WKNavigationResponsePolicy))decisionHandler {
+    
+    // 如果响应的地址是百度，则允许跳转
+    if ([navigationResponse.response.URL.host.lowercaseString isEqual:@"www.baidu.com"]) {
+        
+        // 允许跳转
+        decisionHandler(WKNavigationResponsePolicyAllow);
+        return;
+    }
+    // 不允许跳转
+    decisionHandler(WKNavigationResponsePolicyCancel);
+}
+
+/**
+ *  在发送请求之前，决定是否跳转
+ *
+ *  @param webView          实现该代理的webview
+ *  @param navigationAction 当前navigation
+ *  @param decisionHandler  是否调转block
+ */
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler {
+    
+    // 如果请求的是百度地址，则延迟5s以后跳转
+    if ([navigationAction.request.URL.host.lowercaseString isEqual:@"www.baidu.com"]) {
+        
+        //        // 延迟5s之后跳转
+        //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        //
+        //            // 允许跳转
+        //            decisionHandler(WKNavigationActionPolicyAllow);
+        //        });
+        
+        // 允许跳转
+        decisionHandler(WKNavigationActionPolicyAllow);
+        return;
+    }
+    // 不允许跳转
+    decisionHandler(WKNavigationActionPolicyCancel);
+}
+//用户点击网页上的链接，需要打开新页面时，将先调用这个方法。
+//这个方法的参数 WKNavigationAction 中有两个属性：sourceFrame和targetFrame，分别代表这个action的出处和目标。类型是 WKFrameInfo 。WKFrameInfo有一个 mainFrame 的属性，正是这个属性标记着这个frame是在主frame里还是新开一个frame。
+//如果 targetFrame 的 mainFrame 属性为NO，表明这个 WKNavigationAction 将会新开一个页面。
+-(WKWebView *)webView:(WKWebView *)webView createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration forNavigationAction:(WKNavigationAction *)navigationAction windowFeatures:(WKWindowFeatures *)windowFeatures
+{
+    WKFrameInfo *frameInfo = navigationAction.targetFrame;
+    if (![frameInfo isMainFrame]) {
+        [webView loadRequest:navigationAction.request];
+    }
+    return nil;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>73903480-801A-41BC-984B-C2DE836B90BB</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>wkwebview</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

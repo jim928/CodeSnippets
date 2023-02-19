@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>sksegmentview-example-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>let sView = SKSegmentView.init(titles: ["快速登录","账号密码登录"], configBtnClosure: { (view, btn,index,text) in
+    btn.csFullfill()
+    btn.wTitle(text).wFont(pfr(16)).wTitleColor(UIColor.init(hex: 0x333333))
+    btn.setTitleColor(UIColor.init(hex: 0xD29341), for: .selected)
+}, configIndiClosure: { (indicator) -&gt; (bottomOffset:CGFloat, width:CGFloat?) in
+    indicator.backgroundColor = UIColor.init(hex: 0xD29341)
+    indicator.csHeight(2)
+    return (-5,40)
+}) { (index) in
+    print(index)
+}
+sView.addTo(self.view).csCenterY().csFullfillHorizontal().csHeight(50)
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>926F2793-D76E-45AB-AF75-B8BE3699B374</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>sksegmentview-example-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

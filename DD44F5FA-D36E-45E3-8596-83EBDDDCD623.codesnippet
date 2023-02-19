@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>csvisualformat</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>[NSLayoutConstraint activateConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"&lt;#V#&gt;:|-&lt;#0#&gt;-[v1]-&lt;#0#&gt;-|" options:0 metrics:&lt;#@{@"n1":}#&gt;&lt;#nil#&gt; views:@{@"v1":&lt;#view#&gt;}]]&lt;#;#&gt;</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>DD44F5FA-D36E-45E3-8596-83EBDDDCD623</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>NSLayoutConstraint-visualFormat</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>csvisualformat</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

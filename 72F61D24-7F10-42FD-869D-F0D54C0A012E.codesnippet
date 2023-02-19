@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>tableview-mac</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>/*
+ let scrollView = NSScrollView().addTo(self.view).csFullfill()
+ scrollView.hasVerticalScroller = true
+ 
+ let tableView = NSTableView()//.addTo(scrollView.contentView).csFullfill()
+ tableView.delegate = self
+ tableView.dataSource = self
+ 
+ let column = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "detailsColumn"))
+ column.width = 100
+ column.headerToolTip = "tool tip"
+ column.headerCell.title = "this is title"
+ column.minWidth = 50
+ tableView.addTableColumn(column)
+ 
+ let column1 = NSTableColumn(identifier: NSUserInterfaceItemIdentifier(rawValue: "detailsColumn"))
+ column1.width = 100
+ column1.headerToolTip = "tool tip"
+ column1.headerCell.title = "this is title"
+ column1.minWidth = 50
+ tableView.addTableColumn(column1)
+ 
+ tableView.headerView = nil //这句可以隐藏header
+ tableView.action = #selector(onTap(tableView:))//点击事件
+ tableView.selectRowIndexes(IndexSet(integer: 0), byExtendingSelection: false) //默认选中第一行
+ scrollView.documentView = tableView;
+ */
+@objc func onTap(tableView:NSTableView){
+    print(tableView.selectedRow)
+}
+func numberOfRows(in tableView: NSTableView) -&gt; Int {
+    return 40
+}
+func tableView(_ tableView: NSTableView, heightOfRow row: Int) -&gt; CGFloat {
+    return 40;
+}
+func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -&gt; NSView? {
+    let v = NSView()
+    let text = NSTextField().addTo(v).csCenter()
+    text.isEditable = false
+    text.stringValue = "准备"
+    return v
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>72F61D24-7F10-42FD-869D-F0D54C0A012E</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>tableview-mac</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

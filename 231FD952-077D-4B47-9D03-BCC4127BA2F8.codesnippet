@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>statusbarcolor</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//在需要设置的页面viewDidappear和viewDiddisappear方法里设置
+//需要设置plist中View controller-based status bar appearance为NO
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyle&lt;#Default#&gt; animated:YES];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>231FD952-077D-4B47-9D03-BCC4127BA2F8</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>statusbarcolor</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

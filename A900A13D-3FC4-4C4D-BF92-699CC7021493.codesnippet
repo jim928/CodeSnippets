@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>launchimage-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>/*
+ //  添加启动页
+ let launchImageView = UIImageView(frame: self.view.bounds)
+ launchImageView.image = launchImage()
+ view.addSubview(launchImageView)
+ 
+ UIView.animate(withDuration: 1, delay: 1, options: .curveEaseIn, animations: {
+ 
+ launchImageView.transform = CGAffineTransform(scaleX: 1.5, y: 1.5)
+ launchImageView.alpha = 0
+ }) { (finished) in
+ 
+ launchImageView.removeFromSuperview()
+ }
+ */
+func launchImage() -&gt; UIImage {
+    var launchImage     : UIImage!
+    var viewOrientation : String!
+    let viewSize        = UIScreen.main.bounds.size
+    let orientation     = UIApplication.shared.statusBarOrientation
+    //  获取屏幕方向
+    if orientation == .landscapeLeft || orientation == .landscapeRight {
+        viewOrientation = "Landscape"
+    } else {
+        viewOrientation = "Portrait"
+    }
+    let imagesInfo = Bundle.main.infoDictionary!["UILaunchImages"]
+    for dic: Dictionary&lt;String, String&gt; in imagesInfo as! Array {
+        
+        let imageSize = NSCoder.cgSize(for: dic["UILaunchImageSize"]!)
+        if imageSize.equalTo(viewSize) &amp;&amp; viewOrientation == dic["UILaunchImageOrientation"]! as String {
+            
+            launchImage = UIImage(named: dic["UILaunchImageName"]!)
+        }
+    }
+    return launchImage
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>A900A13D-3FC4-4C4D-BF92-699CC7021493</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>launchimage-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

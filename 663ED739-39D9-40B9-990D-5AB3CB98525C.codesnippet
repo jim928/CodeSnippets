@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>attibutedstring-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>let attr = NSMutableAttributedString(string: self)
+        attr.addAttribute(NSAttributedStringKey.font, value: font19, range: NSRange(location: 0, length: self.count))
+        attr.addAttribute(NSAttributedStringKey.foregroundColor, value: UIColor.white, range: NSRange(location: 0, length: self.count))
+attr.addAttribute(NSAttributedStringKey.strokeColor, value: color122A69, range: NSRange(location: 0, length: self.count))
+attr.addAttribute(NSAttributedStringKey.strokeWidth, value: -1, range: NSRange(location: 0, length: self.count))//描边正值空心描边，负值实心描边
+        let shadow = NSShadow()
+        shadow.shadowColor = UIColor.black
+        shadow.shadowBlurRadius = 5
+        shadow.shadowOffset = CGSize(width: 2, height: 4)
+        attr.addAttribute(NSAttributedStringKey.shadow, value: shadow, range: NSRange(location: 0, length: self.count))</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>663ED739-39D9-40B9-990D-5AB3CB98525C</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>attibutedstring-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

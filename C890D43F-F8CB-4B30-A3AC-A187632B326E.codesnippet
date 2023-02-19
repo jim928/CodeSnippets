@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>yymodel-class-object</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>+ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"hl" : [TYHandicapModel class], @"title" : [TYPlayTitleModel class],@"ol":[TYOddsFieldModel class]};
+}
++ (NSDictionary *)modelCustomPropertyMapper {
+    return @{@"cid" : @"id",@"countStr" : @"count"};
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>C890D43F-F8CB-4B30-A3AC-A187632B326E</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>yymodel内部类的识别</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>yymodel-class-object</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

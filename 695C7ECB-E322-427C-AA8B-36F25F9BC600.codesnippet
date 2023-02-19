@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>findCurrentViewcontroller</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>+ (UIViewController * _Nullable)getCurrentShowController {
+    UIViewController *currentController = nil;
+    UIWindow *window = [[UIApplication sharedApplication] keyWindow];
+    if (window.windowLevel != UIWindowLevelNormal) {
+        NSArray *windows = [[UIApplication sharedApplication] windows];
+        for(UIWindow *tmpWin in windows) {
+            if (tmpWin.windowLevel == UIWindowLevelNormal) {
+                window = tmpWin;
+                break;
+            }
+        }
+    }
+    
+    UIView *frontView = [[window subviews] objectAtIndex:0];
+    id nextResponder = [frontView nextResponder];
+    
+    if ([nextResponder isMemberOfClass:[UIViewController class]]) {
+        currentController = nextResponder;
+    }
+    else if ([nextResponder isKindOfClass:[UITabBarController class]]){
+        UITabBarController *tabbar = (UITabBarController *)nextResponder;
+        UINavigationController *nav = tabbar.selectedViewController;
+        currentController = nav.topViewController;
+    }
+    else if ([nextResponder isKindOfClass:[UINavigationController class]]){
+        UINavigationController *nav = (UINavigationController *)nextResponder;
+        currentController =  nav.topViewController;
+    }
+    return currentController;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>695C7ECB-E322-427C-AA8B-36F25F9BC600</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>findCurrentViewcontroller</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

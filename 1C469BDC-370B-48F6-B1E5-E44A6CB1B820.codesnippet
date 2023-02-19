@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>swipe-up-down</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//UIGestureRecognizerDelegate
+/*
+ UISwipeGestureRecognizer *swipeUp = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+ swipeUp.direction = UISwipeGestureRecognizerDirectionUp;
+ swipeUp.delegate = self;
+ [self.webView addGestureRecognizer:swipeUp];
+ 
+ UISwipeGestureRecognizer *swipeDown = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipe:)];
+ swipeDown.direction = UISwipeGestureRecognizerDirectionDown;
+ swipeDown.delegate = self;
+ [self.webView addGestureRecognizer:swipeDown];
+ */
+- (void)swipe:(UISwipeGestureRecognizer *)swipe
+{
+    NSLog(@"--zq--function- %s",__func__);
+    if (swipe.direction == UISwipeGestureRecognizerDirectionDown) {
+        [self.navigationController setNavigationBarHidden:NO animated:YES];
+    }
+    if (swipe.direction == UISwipeGestureRecognizerDirectionUp) {
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+    }
+}
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer {
+    return YES;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>1C469BDC-370B-48F6-B1E5-E44A6CB1B820</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>scrollview-上下滑动的检测</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>swipe-up-down</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

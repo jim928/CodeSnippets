@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>screen-rotation</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//AppDelegate.h中添加
+@property(nonatomic,assign)BOOL allowRotation;//是否允许转向
+
+//AppDelegate.m中添加
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(nullable UIWindow *)window{
+    if (_allowRotation == YES) {   // 如果属性值为YES,仅允许屏幕横屏旋转,否则仅允许竖屏
+        return UIInterfaceOrientationMaskAll;  // 这里是屏幕要旋转的方向
+    }else{
+        return (UIInterfaceOrientationMaskPortrait);
+    }
+}
+
+//ViewController.m中添加
+- (void)setNewOrientation:(BOOL)landScape{
+    if (landScape) {
+        NSNumber *resetOrientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationUnknown];
+        [[UIDevice currentDevice] setValue:resetOrientationTarget forKey:@"orientation"];
+        NSNumber *orientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeRight];
+        [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
+    }else{
+        NSNumber *resetOrientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationUnknown];
+        [[UIDevice currentDevice] setValue:resetOrientationTarget forKey:@"orientation"];
+        NSNumber *orientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+        [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
+    }
+}
+
+//viewDidLoad 方法中添加
+//AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//appDelegate.allowRotation = YES;//(以上2行代码,可以理解为打开横屏开关)
+//[self setNewOrientation:YES];//调用转屏代码
+
+//viewWillDisappear 方法中添加
+//AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+//appDelegate.allowRotation = NO;//关闭横屏仅允许竖屏
+//[self setNewOrientation:NO];
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>80E80C3B-06B1-4A8E-8FE5-FAFE087075BD</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>单页面强制转屏</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>screen-rotation</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

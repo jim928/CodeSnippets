@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>commit-example-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>/**
+ # 支持markdown
+ # 一级标题
+ ## 二级标题也可以的
+ 注释参考2
+ 隔一行表示换行d
+ 
+ 三个”***"代表一条分割线
+ ***
+ ## 使用示例
+ ```
+ let result = testComment2(pram: "参数1", param2: true))
+ ```
+ 
+ ****
+ - important:这个很重要
+ - returns: 有返回值
+ - parameter pram: The cubes available for allocation
+ - parameter param2: The people that require cubes
+
+ */
+func testComment2(pram:String, param2:Bool) -&gt; Bool {
+    print("markdown支持")
+    return true
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>017F5A9A-9FC8-479B-805A-819ADE01DFA9</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>如何添加详尽注释</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>commit-example-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

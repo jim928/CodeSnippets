@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>collectionviewsectionheaderfooter</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//    [tagsCollectionView registerClass:[ElecGameFilterHeaderView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"SearchHeaderCell"];
+//[tagsCollectionView registerClass:[ElecGameFilterFooterView class] forSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:@"SearchFooterCell"];
+
+//UICollectionViewDelegateFlowLayout
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+    UICollectionReusableView *supplementaryView;
+    if ([kind isEqualToString:UICollectionElementKindSectionHeader]){
+        static NSString * const reuseIdentifierHeader = @"SearchHeaderCell";
+        ElecGameFilterHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:reuseIdentifierHeader forIndexPath:indexPath];
+        
+        supplementaryView = headerView;
+    }
+    else if ([kind isEqualToString:UICollectionElementKindSectionFooter]){
+        static NSString * const reuseIdentifierFooter = @"SearchFooterCell";
+        ElecGameFilterFooterView *footerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:reuseIdentifierFooter forIndexPath:indexPath];
+        [footerView.doneBtn addTarget:self action:@selector(confirmAction) forControlEvents:UIControlEventTouchUpInside];
+        [footerView.clearBtn addTarget:self action:@selector(clearAction) forControlEvents:UIControlEventTouchUpInside];
+        
+        supplementaryView = footerView;
+    }
+    
+    return supplementaryView;
+}
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section{
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    return CGSizeMake(width, 42);
+}
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout referenceSizeForFooterInSection:(NSInteger)section{
+    CGFloat width = [UIScreen mainScreen].bounds.size.width;
+    if (section==0) {
+        return CGSizeZero;
+    }
+    return CGSizeMake(width, 200);
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>DD7C6ABB-4528-40C6-89B5-25581011EF0B</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>collectionviewsectionheaderfooter</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

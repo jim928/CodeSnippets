@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>tableview-init-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>tableView = UITableView()
+        self.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+tableView.register(&lt;#SetTabCell#&gt;.self, forCellReuseIdentifier: &lt;#cell#&gt;.className)
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.csFullfillHorizontal().csBottom().csTop()
+if #available(iOS 11, *) {
+    tableView.contentInsetAdjustmentBehavior = .never
+} else {
+    
+}
+tableView.mj_header = MJRefreshNormalHeader.init(refreshingTarget: self, refreshingAction: #selector(reloadVCData))
+tableView.mj_footer = MJRefreshBackNormalFooter.init(refreshingTarget: self, refreshingAction: #selector(refreshVCData))</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>8C570F25-488E-4E80-AD16-7EC92FDDCBF1</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>tableview-init-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

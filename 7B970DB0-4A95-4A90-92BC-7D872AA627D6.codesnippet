@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>cs-not-allow-expand-horizontal-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>&lt;#view#&gt;.setContentHuggingPriority(UILayoutPriority.required, for: NSLayoutConstraint.Axis.horizontal)//优先级高的优先压缩宽度
+&lt;#view#&gt;.setContentHuggingPriority(UILayoutPriority.init(rawValue: 500), for: NSLayoutConstraint.Axis.horizontal)//优先级低的不会被压缩
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>7B970DB0-4A95-4A90-92BC-7D872AA627D6</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>不允许横向拉伸</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>cs-not-allow-expand-horizontal-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

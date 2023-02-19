@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>string-to-class</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>let jsonStr = "{\"name\":\"wall\",\"age\":\"22\",\"hobby\":\"ball\"}"
+let jsonData=jsonStr.data(using: String.Encoding.utf8, allowLossyConversion: false)
+let json=try? JSONSerialization.jsonObject(with: jsonData!, options: .mutableContainers)</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>48F22D54-BE63-4FB2-93FE-9E45AA673D97</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>字符串转为对象</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>string-to-class</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

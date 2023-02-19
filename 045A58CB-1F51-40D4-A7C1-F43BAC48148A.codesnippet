@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>pushnotification</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+//#import &lt;UserNotifications/UserNotifications.h&gt;
+//#endif
+//    &lt;UNUserNotificationCenterDelegate&gt;
+    if ([[UIDevice currentDevice].systemVersion floatValue] &gt;= 10.0) {
+        //iOS10特有
+        UNUserNotificationCenter *center = [UNUserNotificationCenter currentNotificationCenter];
+        // 必须写代理，不然无法监听通知的接收与点击
+        center.delegate = self;
+        [center requestAuthorizationWithOptions:(UNAuthorizationOptionAlert | UNAuthorizationOptionBadge | UNAuthorizationOptionSound) completionHandler:^(BOOL granted, NSError * _Nullable error) {
+            if (granted) {
+                // 点击允许
+                NSLog(@"注册成功");
+                [center getNotificationSettingsWithCompletionHandler:^(UNNotificationSettings * _Nonnull settings) {
+                    NSLog(@"%@", settings);
+                }];
+            } else {
+                // 点击不允许
+                NSLog(@"注册失败");
+            }
+        }];
+    }else if ([[UIDevice currentDevice].systemVersion floatValue] &gt;8.0){
+        //iOS8 - iOS10
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:UIUserNotificationTypeAlert | UIUserNotificationTypeSound | UIUserNotificationTypeBadge categories:nil]];
+        
+    }
+    // 注册获得device Token
+    [[UIApplication sharedApplication] registerForRemoteNotifications];
+    
+//    // 获得Device Token
+//    - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+//        NSString *des = deviceToken.description;
+//        NSString *dt = [des stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"&lt;&gt;"]];
+//        NSString *dn = [dt stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+//        NSString *new = [dn stringByReplacingOccurrencesOfString:@" " withString:@""];
+//        NSLog(@"--zq-- devicetoken :%@",new);
+//        [SHCoreManager sharedInstance].deviceToken = new;
+//        
+//    }
+//    // 获得Device Token失败
+//    - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+//        NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+//    }
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>045A58CB-1F51-40D4-A7C1-F43BAC48148A</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>pushnotification</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

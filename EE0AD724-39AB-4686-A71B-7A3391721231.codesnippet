@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>animate-keyframes</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>[UIView animateKeyframesWithDuration:0.35 delay:0 options:0 animations:^{
+    [UIView addKeyframeWithRelativeStartTime:0 //0-1百分比 相对总时间的开始时间
+                                relativeDuration:0.5 //0-1百分比 相对总时间的持续时间
+                                      animations:^{
+        self.csIndicatorCenterX = [NSLayoutConstraint constraintWithItem:self.indicatorView attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:self.selectBtn attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:- offsetX * 0.5];
+        self.csIndicatorCenterX.active = YES;
+        
+        self.csIndicatorWidth.constant = 40;
+        [self layoutIfNeeded];
+    }];
+    [UIView addKeyframeWithRelativeStartTime:0.5 
+                            relativeDuration:0.5 
+                                  animations:^{
+        self.csIndicatorCenterX.constant = 0;
+        self.csIndicatorWidth.constant = 20;
+        [self layoutIfNeeded];
+    }];
+} completion:nil];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>EE0AD724-39AB-4686-A71B-7A3391721231</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>多个动画顺序执行最佳方案</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>animate-keyframes</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

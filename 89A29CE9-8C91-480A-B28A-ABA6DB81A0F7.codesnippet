@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>textviewtap</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>    UITextView *policyLabel = [[UITextView alloc]init];
+    policyLabel.editable = NO;
+    //.selectable = NO;会导致点击无反应
+    [self.scrollView addSubview:policyLabel];
+    NSString *str = @"注册即表示同意本公司所有的《规则与条款》和《隐私说明》";
+    NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithString:str];
+    [attributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"PingFangSC-Regular" size:14] range:NSMakeRange(0, [str length])];
+    [attributedString addAttribute:NSForegroundColorAttributeName value:[UIColor colorWithHexString:@"#9b9b9b"] range:NSMakeRange(0, [str length])];
+    [attributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"PingFangSC-Medium" size:14] range:[str rangeOfString:@"《规则与条款》"]];
+    [attributedString addAttribute:NSFontAttributeName value:[UIFont fontWithName:@"PingFangSC-Medium" size:14] range:[str rangeOfString:@"《隐私说明》"]];
+    [attributedString addAttribute:NSLinkAttributeName value:@"hy://rule_protocol" range:[str rangeOfString:@"《规则与条款》"]];
+    [attributedString addAttribute:NSLinkAttributeName value:@"hy://private_protocol" range:[str rangeOfString:@"《隐私说明》"]];
+    policyLabel.attributedText = attributedString;
+    policyLabel.linkTextAttributes = @{NSForegroundColorAttributeName:[UIColor colorWithHexString:@"#7C86E9"]};
+    policyLabel.delegate = self;
+/*
+-(BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange{
+    if ([URL.absoluteString isEqualToString:@"hy://rule_protocol"]) {
+    }
+    if ([URL.absoluteString isEqualToString:@"hy://private_protocol"]) {
+    }
+    return NO;
+}
+-(BOOL)textView:(UITextView *)textView shouldInteractWithURL:(NSURL *)URL inRange:(NSRange)characterRange interaction:(UITextItemInteraction)interaction{
+    if ([URL.absoluteString isEqualToString:@"hy://rule_protocol"]) {
+    }
+    if ([URL.absoluteString isEqualToString:@"hy://private_protocol"]) {
+    }
+    return NO;
+}
+ */
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>89A29CE9-8C91-480A-B28A-ABA6DB81A0F7</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>文字点击处理</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>textviewtap</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

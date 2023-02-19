@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>navrightbutton-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>let rightBtn = UIButton().wFeatures("完成",pfr15,UIColor.white).wFrame(CGRect.init(x: 0, y: 0, width: 50, height: 44))
+rightBtn.titleEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: -16)
+rightBtn.addAction {
+    
+}
+self.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
+
+        </string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>C8C5862B-6BC1-4362-881F-434D9EB6476E</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>navrightbutton-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

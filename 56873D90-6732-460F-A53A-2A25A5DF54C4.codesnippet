@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>audiorecorder</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>[[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryRecord error:nil];
+    NSDictionary *recordSettings =
+    [[NSDictionary alloc] initWithObjectsAndKeys:
+     [NSNumber numberWithFloat: 44100.0],                 AVSampleRateKey,
+     [NSNumber numberWithInt: kAudioFormatAppleLossless], AVFormatIDKey,
+     [NSNumber numberWithInt: 1],                         AVNumberOfChannelsKey,
+     [NSNumber numberWithInt: AVAudioQualityMax],         AVEncoderAudioQualityKey,
+     nil];
+    
+    AVAudioRecorder *recorder = [[AVAudioRecorder alloc] initWithURL: [NSURL URLWithString:soundPath]
+                                                               settings: recordSettings
+                                                                  error: nil];
+    [recorder prepareToRecord];  //创建音频文件 sound.caf
+    [recorder record];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>56873D90-6732-460F-A53A-2A25A5DF54C4</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>audiorecorder</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

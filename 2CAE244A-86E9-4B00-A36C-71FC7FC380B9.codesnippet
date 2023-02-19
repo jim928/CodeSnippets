@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>signal-example-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//http://www.cocoachina.com/articles/21481
+/*
+ let signal = Signal()
+ signal.subscribe { result in
+     print(result)
+ }
+ signal.send(.success(100))
+ signal.send(.success(200))
+ // Print
+ success(100)
+ success(200)
+ */
+enum Result {
+    case success(Int)
+    case error(Error)
+}
+final class Signal {
+    fileprivate typealias Subscriber = (Result) -&gt; Void
+    fileprivate var subscribers: [Subscriber] = []
+  
+    func send(_ result: Result) {
+        for subscriber in subscribers {
+            subscriber(result)
+        }
+    }
+  
+    func subscribe(_ subscriber: @escaping (Result) -&gt; Void) {
+        subscribers.append(subscriber)
+    }
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>2CAE244A-86E9-4B00-A36C-71FC7FC380B9</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>响应式编程简单举例</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>signal-example-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

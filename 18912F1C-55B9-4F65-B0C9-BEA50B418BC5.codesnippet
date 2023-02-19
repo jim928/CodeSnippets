@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>drag-view-oc</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#import "UIDraggableView.h"
+
+@implementation UIDraggableView
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.backgroundColor = UIColor.grayColor;
+                
+        UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(panGestureHandler:)];
+        [self addGestureRecognizer:pan];
+        
+    }
+    return self;
+}
+
+- (void)panGestureHandler:(UIPanGestureRecognizer *)recognizer{
+    if (recognizer.state == UIGestureRecognizerStateChanged){
+        CGPoint translation = [recognizer translationInView:self];
+        
+        CGFloat targetX = self.center.x+translation.x;
+        CGFloat targetY = self.center.y+translation.y;
+        
+        CGFloat width = UIScreen.mainScreen.bounds.size.width;
+        targetX = MIN(targetX, width-self.frame.size.width/2.0);
+        targetX = MAX(targetX, self.frame.size.width/2.0);
+        
+        CGFloat topSpace = 100;
+        targetY = MAX(targetY, topSpace);
+        CGFloat bottomSpace = UIScreen.mainScreen.bounds.size.height - 100;
+        targetY = MIN(targetY, bottomSpace);
+        
+        self.center = CGPointMake(targetX, targetY);
+        
+        [recognizer setTranslation:CGPointZero inView:self];
+    }
+}
+@end
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>18912F1C-55B9-4F65-B0C9-BEA50B418BC5</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>drag-view-oc</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

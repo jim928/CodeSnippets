@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>popview-oc</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#import "SelectViewMatchSetting.h"
+#import "OubaoManager.h"
+
+@interface SelectViewMatchSetting()
+
+@property (nonatomic,copy) void(^optionTap)(TYMatchSettingOption);//!&lt; 点击了任何一个选项
+@property (nonatomic,copy) void(^closeTap)(void);//!&lt;点击了关闭
+@property (nonatomic,strong) UIView *shadowBg;
+@property (nonatomic,strong) UIView *whiteBg;
+@property (nonatomic,strong) NSLayoutConstraint *csCViewHeight; //!&lt;展开动画用
+@property (nonatomic,strong) NSArray&lt;MatchSettingUnitView*&gt; *unitsViews;
+@end
+
+@implementation SelectViewMatchSetting
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self buildViews];
+    }
+    return self;
+}
+- (void)buildViews{
+    UIView *shadowBg = UIView.new;
+    self.shadowBg = shadowBg;
+    [self addSubview:shadowBg];
+    shadowBg.backgroundColor = UIColor.blackColor;
+    [shadowBg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self).offset(NAV_BAR_HEIGHT);
+        make.left.right.bottom.equalTo(self);
+    }];
+    self.shadowBg.alpha = 0;
+    
+    UIButton *closeBtn = UIButton.new;
+    [self addSubview:closeBtn];
+    [closeBtn addTarget:self action:@selector(closeBtnTap) forControlEvents:UIControlEventTouchUpInside];
+    [closeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+    }];
+    
+    UIView *whiteBg = UIView.new;
+    self.whiteBg = whiteBg;
+    whiteBg.backgroundColor = color_FFFFFF;
+    whiteBg.clipsToBounds = YES;
+    [self addSubview:whiteBg];
+    [whiteBg mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self).offset(NAV_BAR_HEIGHT);
+        make.left.right.equalTo(self);
+    }];
+    self.csCViewHeight = [NSLayoutConstraint constraintWithItem:whiteBg attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:1.0 constant:0];
+    self.csCViewHeight.active = YES;
+    self.whiteBg.alpha = 0;
+    
+    UIView *cView = UIView.new;
+    [whiteBg addSubview:cView];
+    [cView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(cView).priority(500);
+        make.left.right.bottom.equalTo(whiteBg);
+    }];
+    NSArray *array = @[
+        @(TYMatchSettingOption_sort),
+        @(TYMatchSettingOption_oddzone),
+        @(TYMatchSettingOption_preference),
+        @(TYMatchSettingOption_stand_newbie),
+        @(TYMatchSettingOption_language),
+        @(TYMatchSettingOption_rule),
+        @(TYMatchSettingOption_tutorial),
+    ];
+    NSMutableArray *tmpArray = NSMutableArray.array;
+    for (int i=0; i&lt;array.count; i++) {
+        NSNumber *option = array[i];
+        MatchSettingUnitView *unitView = [[MatchSettingUnitView alloc]initWithOption:option.intValue];
+        [cView addSubview:unitView];
+        [unitView.btn addTarget:self action:@selector(unitViewTap:) forControlEvents:UIControlEventTouchUpInside];
+        [unitView csFormation:i rowNum:3 direction:CSFormationDirection_vertical widthHeight:90 horizonSpace:0 verticalSpace:0 top:0 left:0 bottom:0 right:0];
+        [tmpArray addObject:unitView];
+    }
+    self.unitsViews = [NSArray arrayWithArray:tmpArray];
+    
+}
+- (void)showFromView:(UIView *)view optionTap:(void (^)(TYMatchSettingOption))optionTap closeTap:(void (^)(void))closeTap{
+    [view addSubview:self];
+    self.optionTap = optionTap;
+    self.closeTap = closeTap;
+    [self mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.bottom.left.right.equalTo(view);
+    }];
+    [self showAnimate];
+}
+- (void)showAnimate{
+    [self layoutIfNeeded];
+    [UIView animateWithDuration:0.3 animations:^{
+        self.shadowBg.alpha = 0.3;
+        self.whiteBg.alpha = 1;
+        self.csCViewHeight.constant = 270;
+        [self layoutIfNeeded];
+    }];
+}
+- (void)hidAnimate{
+    [UIView animateWithDuration:0.3 animations:^{
+        self.shadowBg.alpha = 0;
+        self.whiteBg.alpha = 0;
+        self.csCViewHeight.constant = 0;
+        [self layoutIfNeeded];
+    }completion:^(BOOL finished) {
+        [self removeFromSuperview];
+        
+        if (self.closeTap){
+            self.closeTap();
+        }
+    }];
+}
+- (void)closeBtnTap{
+    [self hidAnimate];
+}
+-(void)hide{
+    [self hidAnimate];
+}
+- (void)unitViewTap:(UIButton *)btn{
+
+}
+@end
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>65DB5AA1-29C6-42B1-8632-A231ACE7EFD6</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>popview-oc</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>clean-data-to-string-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>let str = String(decoding: data, as: UTF8.self)
+let str1 = str.replacingOccurrences(of: "\\", with: "")
+let str2 = str1.suffix(str1.count-1)
+let str3 = str2.prefix(str2.count-1)
+let second = Data(str3.utf8)
+if let json = try? JSON(data: second) {
+    
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>49AEFC6D-C8E3-476D-865C-4E8F2B41F845</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>clean-data-to-string-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

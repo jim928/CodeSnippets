@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>data-to-dic-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>do {
+    guard let jsonObject = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any]
+    else {
+        print("Could not get JSON from responseData as dictionary")
+        return
+    }
+    print("The json receive is: " + jsonObject.description)
+} catch  {
+    print("error parsing response from POST on /todos")
+    return
+    }
+
+if let data = data {
+    let json = try? JSONSerialization.jsonObject(with: data,options:.allowFragments) as! [String: Any]
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>D10A385C-10F2-473D-858D-2EE68DE9A384</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>data-to-dic-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

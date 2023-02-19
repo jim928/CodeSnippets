@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>asynget</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>NSString *url = nil;
+NSURLRequest *request = [[NSURLRequest alloc]initWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30];
+[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response,NSData *data,NSError *connectionError){
+    //由于是异步的get请求，如果有对UI的操作 必须调回主线程:
+    NSLog(@"--zq-- request 返回:%@",[[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding]);
+    if (data) {
+        id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        if ([jsonObject isKindOfClass:[NSDictionary class]]) {
+            
+        }
+    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+        //对UI的操作
+    });
+    
+    //其他异步的数据操作
+}];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>BFCECA83-4334-493A-8B01-82823FAC1E36</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>asynget</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

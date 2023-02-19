@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>block-category-property</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>#import &lt;Foundation/Foundation.h&gt;
+
+typedef void(^configLocalBlock)(void);
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface NSObject (local)
+
+@property (nonatomic,copy) configLocalBlock localBlock;
+
+
+@end
+
+
+
+#import "NSObject+local.h"
+#import &lt;objc/runtime.h&gt;
+
+static const void *UtilityKey = &amp;UtilityKey;
+
+@implementation NSObject (local)
+
+@dynamic localBlock;
+
+- (configLocalBlock)localBlock {
+    return objc_getAssociatedObject(self, UtilityKey);
+}
+
+- (void)setBlock:(configLocalBlock)block{
+    objc_setAssociatedObject(self, UtilityKey, block, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+
+
+@end
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>F836A293-290B-4BD0-8862-0D1446BA64A3</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>block-category-property</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>block-category-property</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

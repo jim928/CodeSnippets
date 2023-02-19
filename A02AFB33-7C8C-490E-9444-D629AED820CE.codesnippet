@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>how-to-completion-failled-solution</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>For me adding anything to the Build Settings didn't work, but deleting Derived Data and building the Pod scheme explicitely did the trick.
+
+    Go to "Manage Schemes" and check the Pods-MyProject scheme. Select this scheme (button next to the run and stop button) and Build for Running shift + cmd + R Switch back to your project scheme afterwards.</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>A02AFB33-7C8C-490E-9444-D629AED820CE</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>用了pod的工程 代码补全不起作用的解决办法。</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

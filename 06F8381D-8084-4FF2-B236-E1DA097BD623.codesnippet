@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>post</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>NSMutableURLRequest *rq = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    rq.HTTPMethod = @"POST";
+    rq.timeoutInterval = 20;
+    
+    NSDictionary *paramDic = nil;
+    //添加参数
+    __block NSString *bodyStr = @"";
+    [paramDic enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+        NSString *appendStr = [NSString stringWithFormat:@"%@=%@%@",key,obj,stop?@"":@"&amp;"];
+        bodyStr = [bodyStr stringByAppendingString:appendStr];
+    }];
+    NSMutableData *requestBody = [NSMutableData data];
+    [requestBody appendData:[[bodyStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]]dataUsingEncoding:NSUTF8StringEncoding]];
+    [rq setHTTPBody:requestBody];
+    
+    NSURLSession *urlSession = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration defaultSessionConfiguration]];
+    //创建task
+    NSURLSessionDataTask *task = [urlSession dataTaskWithRequest:rq completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        //在主线程中处理block回调
+        [[NSOperationQueue mainQueue]addOperationWithBlock:^{
+            
+            NSString *resultStr = [[NSString alloc]initWithData:data encoding:NSUTF8StringEncoding];
+            NSDictionary *resultDic = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+            NSLog(@"--zq-- str:%@",resultStr);
+            
+        }];
+    }];
+    //task 开始运作
+    [task resume];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>06F8381D-8084-4FF2-B236-E1DA097BD623</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>urlsession</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

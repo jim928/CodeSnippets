@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>uipickview-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//    let pickView = UIPickerView()
+//    self.view.addSubview(pickView)
+//    pickView.delegate = self
+//    pickView.dataSource = self
+    func numberOfComponents(in pickerView: UIPickerView) -&gt; Int {
+        &lt;#code#&gt;
+    }
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -&gt; Int {
+        &lt;#code#&gt;
+    }
+    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -&gt; CGFloat {
+        &lt;#code#&gt;
+    }
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -&gt; UIView {
+        //看view是否为nil，不为nil就是在复用，否则初始化
+        //可以使用tag来识别子view 以避免额外创建view类，让代码更少
+        //例如： let label = view?.viewWithTag(100) ?? UILabel()
+        let cellView = view ?? UIView()
+        //config cellView
+        return cellView
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>448716A0-0631-4616-892A-99A25C7784B4</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>uipickview-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

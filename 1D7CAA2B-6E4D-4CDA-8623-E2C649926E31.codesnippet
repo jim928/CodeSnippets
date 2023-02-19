@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>chinese-lookup</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>Xcode Find - Regular Expression
+OC语言在输入框中输入 @"[^"]*[\u4E00-\u9FA5]+[^"\n]*?"
+swift语言在输入框中输入 "[^"]*[\u4E00-\u9FA5]+[^"\n]*?"</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>1D7CAA2B-6E4D-4CDA-8623-E2C649926E31</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>查找工程中的所有中文</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>chinese-lookup</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

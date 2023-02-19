@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>json-struct-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>struct Photo: Codable
+{
+    //String, URL, Bool and Date conform to Codable.
+    var title: String
+    var url: URL
+    var isSample: Bool
+    
+    //The Dictionary is of type [String:String] and String already conforms to Codable.
+    var metaData: [String:String]
+    
+    //PhotoType and Size are also Codable types
+    var type: PhotoType
+    var size: Size
+}
+
+struct Size: Codable
+{
+    var height: Double
+    var width: Double
+}
+
+enum PhotoType: String, Codable
+{
+    case flower
+    case animal
+    case fruit
+    case vegetable
+}
+
+//Encoding Example
+/*
+let photoObject = Photo(title: "Hibiscus", url: URL(string: "https://www.flowers.com/hibiscus")!, isSample: false, metaData: ["color" : "red"], type: .flower, size: Size(width: 200, height: 200))
+let encodedData = try? JSONEncoder().encode(photoObject)
+*/
+
+//Decoding Example
+/*
+let jsonString = """
+{
+"type":"fruit",
+"size":{
+"width":150,
+"height":150
+},
+"title":"Apple",
+"url":"https:\\/\\/www.fruits.com\\/apple",
+"isSample":true,
+"metaData":{
+"color":"green"
+}
+}
+"""
+if let jsonData = jsonString.data(using: .utf8)
+{
+    let photoObject = try? JSONDecoder().decode(Photo.self, from: jsonData)
+}
+*/</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>FBD171B4-2B4E-41E5-9CB1-F02288E62AFB</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>json和data的decode、encode样例</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>json-struct-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

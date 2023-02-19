@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>drawrect-context</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>    //An opaque type that represents a Quartz 2D drawing environment.
+    //一个不透明类型的Quartz 2D绘画环境,相当于一个画布,你可以在上面任意绘画
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    // 背景颜色设置 如果要设置透明背景 去掉下方代码 在外面设置dview.backgroundColor = UIColor.clearColor; 即可
+    [[UIColor whiteColor] set];
+    CGContextFillRect(context, rect);
+    //或如下代码设置背景颜色
+    [fillColor setFill]; 
+    UIRectFill(rect);</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>F342CB60-C3E2-48A3-BAAC-4ADC24D7BA51</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>drawrect-context</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

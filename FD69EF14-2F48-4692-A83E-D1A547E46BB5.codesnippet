@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>webview-save-to-file</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>    //将网页内容生成存档
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        DispatchQueue.main.asyncAfter(wallDeadline: DispatchWallTime.now() + 1) {
+            if #available(iOS 14.0, *) {
+                self.webView.createWebArchiveData { (result) in
+                    switch result {
+                    case .success(let data) :
+                        let documentPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first ?? ""
+                        let path = documentPath+"/webdata.webarchive"
+                        FileManager.default.createFile(atPath: path, contents: data, attributes: nil)
+                        shouldLoadPreferenceFromServer = false
+                        break
+                    default: break
+                        
+                    }
+                    
+                }
+            } else {
+                
+            }
+        }
+    }
+    //读取存档
+    let htmlPath = Bundle.main.path(forResource: "webdata", ofType: "webarchive")
+    let htmlUrl = URL(fileURLWithPath: htmlPath!, isDirectory: false)
+    
+    let documentPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first ?? ""
+    let filePath = documentPath + "/webdata.webarchive"
+    let fileUrl = URL(fileURLWithPath: filePath, isDirectory: false)
+    if filePath.isFileExist {
+        webView.loadFileURL(fileUrl, allowingReadAccessTo: fileUrl)
+    }else{
+        webView.loadFileURL(htmlUrl, allowingReadAccessTo: htmlUrl)
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>FD69EF14-2F48-4692-A83E-D1A547E46BB5</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>将WKWebView内容存档和读取（ios14）</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>webview-save-to-file</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

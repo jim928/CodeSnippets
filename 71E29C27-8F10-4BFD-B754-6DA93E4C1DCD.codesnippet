@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>corner</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>&lt;#object#&gt;.layer.masksToBounds = YES;
+&lt;#object#&gt;.layer.cornerRadius = &lt;#value#&gt;
+//部分圆角实现
+UIBezierPath *maskPath = [UIBezierPath bezierPathWithRoundedRect:view2.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight | UIRectCornerBottomLeft | UIRectCornerBottomRight cornerRadii:CGSizeMake(10, 10)];
+CAShapeLayer *maskLayer = [[CAShapeLayer alloc] init];
+maskLayer.frame = &lt;#view#&gt;.bounds;
+maskLayer.path = maskPath.CGPath;
+&lt;#view#&gt;.layer.mask = maskLayer;</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>71E29C27-8F10-4BFD-B754-6DA93E4C1DCD</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>圆角处理</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>corner</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

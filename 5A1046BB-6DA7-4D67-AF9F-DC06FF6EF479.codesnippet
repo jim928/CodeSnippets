@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>regex-letterandnumber</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>NSString * regex = @"^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{&lt;#5#&gt;,&lt;#11#&gt;}$";
+NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@",regex];
+BOOL result = [pred evaluateWithObject:text];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>5A1046BB-6DA7-4D67-AF9F-DC06FF6EF479</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>字母和数字组合判断</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>regex-letterandnumber</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

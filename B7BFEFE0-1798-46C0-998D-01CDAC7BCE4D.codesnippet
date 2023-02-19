@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>swift-json-class-example</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>class YouhuiItem: NSObject,Codable{
+    var activeCode:String = ""
+    var Main_Title:String = ""
+    var GameType:Int = 0
+    var Id:Int = 0
+    
+    required convenience public init(json:SKJSON) {
+        self.init()
+        self.activeCode = json["activeCode"].stringValue
+        self.Main_Title = json["Main_Title"].stringValue
+        self.GameType = json["GameType"].intValue
+        self.Id = json["Id"].intValue
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>B7BFEFE0-1798-46C0-998D-01CDAC7BCE4D</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>swiftyjson 类 定义 样例</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>swift-json-class-example</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

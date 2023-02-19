@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>keyboard-show-hide-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: nil) { [weak self](notification) in
+    let userInfo: NSDictionary = notification.userInfo! as NSDictionary
+    let value = userInfo.object(forKey: UIResponder.keyboardFrameEndUserInfoKey)
+    let keyboardRec = (value as AnyObject).cgRectValue
+    let height:CGFloat = keyboardRec?.size.height ?? 0
+    self?.scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: height, right: 0)            
+}
+NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: nil) { [weak self](notification) in
+    self?.scrollView.contentInset = UIEdgeInsets.zero
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>BC7BE206-CFB5-4385-9706-FFDA71F20D5D</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>rxswfit键盘遮挡处理</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>keyboard-show-hide-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

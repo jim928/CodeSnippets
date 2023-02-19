@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>appDefines-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>import Foundation
+import SightKit
+
+// MARK: - colors
+let mainColor = "&lt;#000000#&gt;".toColor
+
+// MARK: - urls
+#if DEBUG
+var hostUrl = "&lt;#https://abc.com#&gt;"
+#else
+var hostUrl = "&lt;#https://abc.com#&gt;"
+#endif
+
+enum AppUrl : String {
+    case a = "abcd"
+    
+    var fullUrl:String{
+        get {
+            return String(format: "%@%@", hostUrl,self.rawValue)
+        }
+    }
+}
+
+// MARK: - other defines
+
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>7C146207-9D0C-4412-876E-B8E44829082B</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>appDefines-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

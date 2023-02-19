@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>class-tip-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>type(of:)：返回对象实例所指向的真正对象类型。
+.Type：在类型声明时使用，比如，在函数参数声明时，期望参数为Dog类型或其子类类型，可以写成Dog.Type。
+.self：代表一个类型，如，函数参数需要Dog.Type类型时，可以传递Dog.self。
+Self：在方法声明时，在返回类型中使用Self关键字，具有动态性。</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>130AFB3D-5F85-494E-AAD8-AF4799E8CA7E</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>class-tip-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

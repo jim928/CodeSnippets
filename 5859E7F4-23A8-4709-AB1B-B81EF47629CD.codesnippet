@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>sort-array-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//对原数组就行修改排序
+&lt;#arrayWillBeSort#&gt;.sort { (s1:Int, s2:Int) -&gt; Bool in
+    return s1 &lt; s2
+}
+//得到一个原数组排序后的副本
+let &lt;#sortedArray#&gt; = &lt;#array#&gt;.sorted { (s1:Int, s2:Int) -&gt; Bool in
+    return s1 &lt; s2
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>5859E7F4-23A8-4709-AB1B-B81EF47629CD</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>sort-array-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

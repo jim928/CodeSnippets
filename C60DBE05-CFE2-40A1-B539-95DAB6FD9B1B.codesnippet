@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>bannerview</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>ClassImplementation</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//@import iAd; ADBannerViewDelegate
+- (void)bannerViewWillLoadAd:(ADBannerView *)banner
+{
+    
+}
+- (void)bannerViewDidLoadAd:(ADBannerView *)banner
+{
+    
+}
+- (void)bannerViewActionDidFinish:(ADBannerView *)banner
+{
+    //这个方法在全屏的广告退出的时候调用。在这里，全屏广告出现时暂停的全部动作又可以开始运行。
+}
+- (void)bannerView:(ADBannerView *)banner didFailToReceiveAdWithError:(NSError *)error
+{
+    //在没有广告分发到app的时候调用这个方法。这个方法被调用的时候，隐藏Banner这样就不会出现一个光秃秃的Banner了。
+}
+-(BOOL)bannerViewActionShouldBegin:(ADBannerView *)banner willLeaveApplication:(BOOL)willLeave{
+    //用户点击了bannerView后 返回yes modal一个全屏广告， 返回no 不会出现全屏广告 当这个全屏广告出现的时候任何用户相关的活动都需要暂停
+    return YES;
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>C60DBE05-CFE2-40A1-B539-95DAB6FD9B1B</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>google广告</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>bannerview</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>transform</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//x，y方向平移以及动画组合
+CGAffineTransform transform = CGAffineTransformMakeTranslation(50, 50);
+view.transform = CGAffineTransformTranslate(transform, 50, 50);
+//x，y方向缩放以及动画组合
+CGAffineTransform transform1 = CGAffineTransformMakeScale(0.5, 0.5);
+view.transform = CGAffineTransformTranslate(transform1, 0.5, 0.5);
+//旋转以及动画组合
+CGAffineTransform transform2 = CGAffineTransformMakeRotation(M_PI*0.5);
+view.transform = CGAffineTransformRotate(transform2, M_PI*0.5);
+//还原到初始状态
+view.transform = CGAffineTransformIdentity;</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>2AB86327-3E6A-486F-ABD0-1AB8802C2ADD</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>transform-形变动画</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>navbackbtninit</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>UIButton * leftBtn = [[UIButton alloc]initWithFrame:CGRectZero];
+    leftBtn.frame = CGRectMake(0, 0, 60,44);
+    [leftBtn addTarget:self action:@selector(backBtnClicked) forControlEvents:UIControlEventTouchUpInside];
+    UIImageView *backImgView = [[UIImageView alloc]initWithFrame:CGRectMake(0, (44-18)/2.0, 10, 18)];
+    [leftBtn addSubview:backImgView];
+    backImgView.contentMode = UIViewContentModeScaleAspectFit;
+    backImgView.image = [UIImage imageNamed:@"BackArrow"];
+    UIBarButtonItem * leftBarBtn = [[UIBarButtonItem alloc]initWithCustomView:leftBtn];
+    self.navigationItem.leftBarButtonItem = leftBarBtn ;</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>63B6A15B-E295-42C4-A900-6D723D8852A1</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>navbackbtninit</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

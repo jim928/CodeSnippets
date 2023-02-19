@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>audioplayer</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>NSURL *url = [[NSBundle mainBundle]URLForResource:@"Oblivion" withExtension:@"mp3"];
+    NSError *error = nil;
+    AVAudioPlayer *player = [[AVAudioPlayer alloc]initWithContentsOfURL:url error:&amp;error];
+    
+    if (error) {
+        NSLog(@"--zq-- error :%@",error.description);
+    }
+    [player prepareToPlay];//会导致 iPhone侧面音量调节不显示
+    [player play];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>BB931C25-EDDE-40D3-B5E9-D1B85284ECC9</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>audioplayer</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

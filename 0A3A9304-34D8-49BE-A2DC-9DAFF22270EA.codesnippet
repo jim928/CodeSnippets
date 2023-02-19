@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>json-file-to-json-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>if let path = Bundle.main.path(forResource: "app", ofType: "json") {
+            do {
+                let string = try String(contentsOfFile: path, encoding: String.Encoding.utf8)
+                let data = string.data(using: String.Encoding.utf8)
+                if let jsonObject = try JSONSerialization.jsonObject(with: data!, options: []) as? [String: Any] {
+                    if let str = jsonObject["parentId"] as? String {
+                        return str
+                    }
+                    return ""
+                }
+            }catch{
+                print("app.json not exist,there will is no parentId")
+            }
+        }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>0A3A9304-34D8-49BE-A2DC-9DAFF22270EA</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>json-file-to-json-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

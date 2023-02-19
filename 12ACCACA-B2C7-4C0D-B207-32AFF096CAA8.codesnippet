@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>strongself</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>__strong __typeof(weakSelf) strongSelf = weakSelf;
+/*
+ 由于weak指针随时都有可能被置为nil，如果当block中使用了多个self，如下
+
+ __weak __typeof(self) weakSelf = self;
+ self.block = ^{
+     [weakSelf doSomething1];
+     [weakSelf doSomething2];     
+ }
+ 在执行完doSomething1时，weakSelf有可能被置为nil，结果导致doSomething2没有执行，这种执行了一半的情况当然不是我们愿意看到的，所以在block内我们再对weakSelf产生一个强引用，来保证在block结束之前，weakSelf不会被释放。
+
+ __weak __typeof(self) weakSelf = self;
+ self.block = ^{
+     __strong __typeof(weakSelf) strongSelf = weakSelf;
+     [strongSelf doSomething1];
+     [strongSelf doSomething2];     
+ }
+ */</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>12ACCACA-B2C7-4C0D-B207-32AFF096CAA8</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>strongself</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

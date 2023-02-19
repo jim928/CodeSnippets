@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>attributedstring-add-image</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc]initWithString:ImageText];
+UIImage *image = [UIImage imageNamed:@"emoji"];
+NSTextAttachment *attachment = [[NSTextAttachment alloc]init];
+attachment.image = image;
+attachment.bounds = CGRectMake(0, 0, 30, 30);
+NSAttributedString *attrStr1 = [NSAttributedString attributedStringWithAttachment:attachment];
+[attrStr appendAttributedString:attrStr1];
+/*
+ 如果图片大小和文字不一致 用下面的重载的方法解决
+ //.h
+ #import &lt;UIKit/UIKit.h&gt;
+ @interface YOETextAttachment : NSTextAttachment
+
+ @end
+
+ //.m
+ #import "YOETextAttachment.h"
+
+ @implementation YOETextAttachment
+
+ //重载此方法 使得图片的大小和行高是一样的。
+ - (CGRect)attachmentBoundsForTextContainer:(NSTextContainer *)textContainer proposedLineFragment:(CGRect)lineFrag glyphPosition:(CGPoint)position characterIndex:(NSUInteger)charIndex
+ {
+     return CGRectMake(0, 0, lineFrag.size.height, lineFrag.size.height);
+ }
+
+ @end
+         */</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>257F976A-6E36-41C1-B570-B83B9026A9F5</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>attributedstring-add-image</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

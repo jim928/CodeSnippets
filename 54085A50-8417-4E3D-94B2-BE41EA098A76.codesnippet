@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>titlescrollview-oc</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//
+//  TYCommonScrollTitleView.m
+//  OubaoSport
+//
+//  Created by mac on 14/3/2021.
+//
+
+/*
+#import &lt;UIKit/UIKit.h&gt;
+
+NS_ASSUME_NONNULL_BEGIN
+
+@interface TYCommonScrollTitleView : UIScrollView
+
+@property (nonatomic,assign) NSInteger selectIndex;
+
+-(void)setTitlesNum:(NSInteger)num configBtnBlock:(void(^)(UIButton *btn,NSInteger index))configBtnBlock tapBlock:(void(^)(UIButton *btn,NSInteger index))tapBlock;
+
+
+@end
+
+NS_ASSUME_NONNULL_END
+*/
+
+#import "TYCommonScrollTitleView.h"
+#import &lt;Masonry/Masonry.h&gt;
+#import "OubaoManager.h"
+@interface TYCommonScrollTitleView()
+
+
+@property (nonatomic,strong) UIView *contentView;
+@property (nonatomic,strong) UIView *line;
+@property (nonatomic,strong) NSMutableArray *btnsArray;
+@property (nonatomic, weak) UIButton *selectedButton;
+
+@property (nonatomic,strong) NSLayoutConstraint *csLineCenterX;
+
+@property (nonatomic,copy) void(^tapBlock)(UIButton *btn,NSInteger index);
+
+@end
+
+@implementation TYCommonScrollTitleView
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self buildViews];
+    }
+    return self;
+}
+- (void)buildViews{
+    self.showsHorizontalScrollIndicator = NO;
+    
+    [self addSubview:self.contentView];
+    [self.contentView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.edges.equalTo(self);
+        make.height.mas_equalTo(self);
+    }];
+}
+- (void)setTitlesNum:(NSInteger)num configBtnBlock:(void (^)(UIButton * _Nonnull, NSInteger))configBtnBlock tapBlock:(void (^)(UIButton * _Nonnull, NSInteger))tapBlock{
+    self.tapBlock = tapBlock;
+    
+    [self.contentView.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];
+    [self.btnsArray removeAllObjects];
+    
+    [self.contentView addSubview:self.line];
+    [self.line mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.bottom.equalTo(self.contentView).offset(-4);
+    }];
+    
+    UIButton *last;
+    for (int i=0; i&lt;num; i++) {
+        UIButton *btn = UIButton.new;
+        [self.contentView addSubview:btn];
+        [btn addTarget:self action:@selector(btnTap:) forControlEvents:UIControlEventTouchUpInside];
+        btn.tag = i;
+        configBtnBlock(btn,i);
+        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.bottom.equalTo(self.contentView);
+            make.width.mas_equalTo(btn.intrinsicContentSize.width+24);
+            if (last){
+                make.left.equalTo(last.mas_right);
+            }else{
+                make.left.equalTo(self.contentView);
+            }
+            if (i==num-1){
+                make.right.equalTo(self.contentView);
+            }
+        }];
+        
+        [self.btnsArray addObject:btn];
+        
+        if (i==0){
+            self.selectedButton = btn;
+        }
+        
+        last = btn;
+    }
+    
+    
+}
+- (void)setSelectIndex:(NSInteger)selectIndex{
+    _selectIndex = selectIndex;
+    
+    if (self.btnsArray.count &gt; selectIndex){
+        self.selectedButton = self.btnsArray[selectIndex];
+    }
+}
+- (void)btnTap:(UIButton*)btn{
+    self.selectIndex = btn.tag;
+}
+- (void)setSelectedButton:(UIButton *)selectedButton{
+    _selectedButton.selected = NO;
+    _selectedButton = selectedButton;
+    _selectedButton.selected = YES;
+    
+    self.csLineCenterX.active = NO;
+    self.csLineCenterX = nil;
+    self.csLineCenterX = [NSLayoutConstraint constraintWithItem:self.line attribute:NSLayoutAttributeCenterX relatedBy:NSLayoutRelationEqual toItem:selectedButton attribute:NSLayoutAttributeCenterX multiplier:1.0 constant:0];
+    [UIView animateWithDuration:0.1 animations:^{
+        self.csLineCenterX.active = YES;
+        [self layoutIfNeeded];
+    }];
+    
+    if (self.tapBlock){
+        self.tapBlock(selectedButton, selectedButton.tag);
+    }
+}
+- (UIView *)contentView{
+    if (_contentView == nil){
+        _contentView = UIView.new;
+    }
+    return _contentView;
+}
+- (UIView *)line{
+    if (_line == nil){
+        _line = UIView.new;
+        _line.backgroundColor = themeColor;
+        _line.layer.masksToBounds = YES;
+        _line.layer.cornerRadius = 1.5;
+        [_line mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.width.mas_equalTo(18);
+            make.height.mas_equalTo(3);
+        }];
+    }
+    return _line;
+}
+- (NSMutableArray *)btnsArray{
+    if (_btnsArray == nil){
+        _btnsArray = NSMutableArray.array;
+    }
+    return _btnsArray;
+}
+@end
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>54085A50-8417-4E3D-94B2-BE41EA098A76</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>titlescrollview-oc</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

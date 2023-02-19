@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>find-one-frame-of-video</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>+ (void)setThumbnailForImgView:(UIImageView *)imgView videoUrlStr:(NSString *)videoUrlStr placeHoldImg:(UIImage *)placeHoldImage{
+    if (videoUrlStr==nil) {
+        imgView.image = placeHoldImage;
+        return;
+    }
+    
+    if ([[VideoThumbnailManage sharedInstance].urlImgPairs objectForKey:videoUrlStr]) {
+        imgView.image = [[VideoThumbnailManage sharedInstance].urlImgPairs objectForKey:videoUrlStr];
+        return;
+    }
+    __block NSString *blockVideoURLStr = videoUrlStr;
+    __block UIImageView *blockImgView = imgView;
+    blockVideoURLStr = [blockVideoURLStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        AVURLAsset *asset = [[AVURLAsset alloc] initWithURL:[NSURL URLWithString:blockVideoURLStr] options:nil];
+        if (asset==nil) {
+            NSLog(@"--zq-- AVURLAsset init faliled bacause of bad url");
+            return ;
+        }
+        AVAssetImageGenerator *assetIG =
+        [[AVAssetImageGenerator alloc] initWithAsset:asset];
+        assetIG.appliesPreferredTrackTransform = YES;
+        assetIG.apertureMode = AVAssetImageGeneratorApertureModeEncodedPixels;
+        
+        CGImageRef thumbnailImageRef = NULL;
+        CFTimeInterval thumbnailImageTime = 1.0;
+        NSError *igError = nil;
+        //* CMTimeMake(a,b) a当前第几帧, b每秒钟多少帧.当前播放时间a/b * CMTimeMakeWithSeconds(a,b) a当前时间,b每秒钟多少帧.
+        thumbnailImageRef = [assetIG copyCGImageAtTime:CMTimeMakeWithSeconds(thumbnailImageTime, 30) actualTime:NULL error:&amp;igError];
+        
+        if (!thumbnailImageRef)
+        NSLog(@"thumbnailImageGenerationError %@", igError );
+        
+        UIImage *image = thumbnailImageRef
+        ? [[UIImage alloc] initWithCGImage:thumbnailImageRef]
+        : nil;
+        
+        if (image) {
+            [[VideoThumbnailManage sharedInstance].urlImgPairs setObject:image forKey:videoUrlStr];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (image) {
+                blockImgView.image = image;
+            }else{
+                blockImgView.image = placeHoldImage;
+            }
+        });
+    });
+    
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>7672BDEF-2D2A-4F54-AC00-7E2A587618DD</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>find-one-frame-of-video</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

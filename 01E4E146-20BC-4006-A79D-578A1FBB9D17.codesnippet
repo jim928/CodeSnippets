@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>collectionview-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>/*
+ UICollectionViewDelegate,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout
+ let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+ layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+ layout.itemSize = CGSize(width: 40, height: 40)
+ layout.minimumInteritemSpacing = 10
+ layout.minimumLineSpacing = 10
+ let colView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+ colView.dataSource = self
+ colView.delegate = self
+ colView.register(FreelancerCell.self, forCellWithReuseIdentifier: "cell")
+ colView.backgroundColor = UIColor.white
+ self.view.addSubview(colView)
+colView.translatesAutoresizingMaskIntoConstraints = false 
+ self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[v1]-0-|", options: [], metrics: nil, views: ["v1":colView]))
+ self.view.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[v1]-0-|", options: [], metrics: nil, views: ["v1":colView]))
+ */
+func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -&gt; Int {
+    return &lt;#100#&gt;
+}
+func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -&gt; UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "&lt;#cell#&gt;", for: indexPath) as! &lt;#CustomCell#&gt;
+    return cell
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>01E4E146-20BC-4006-A79D-578A1FBB9D17</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>collectionview-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

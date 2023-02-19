@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>drawline</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string> // 线的路径
+        UIBezierPath *linePath = [UIBezierPath bezierPath];
+        // 起点
+        [linePath moveToPoint:CGPointMake(12.5, 10+200*(1-self.startPoint.floatValue))];
+        // 其他点
+        [linePath addLineToPoint:CGPointMake(25+12.5, 10+200*(1-self.endPoint.floatValue))];
+        
+        CAShapeLayer *lineLayer = [CAShapeLayer layer];
+        
+        lineLayer.lineWidth = 2;
+        lineLayer.strokeColor = [UIColor font_goldColor].CGColor;
+        lineLayer.path = linePath.CGPath;
+        lineLayer.fillColor = nil; // 默认为blackColor
+        
+        [self.contentView.layer addSublayer:lineLayer];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>47E33073-FAD5-45C8-A2CC-D3E927D9D5E1</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>drawline</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

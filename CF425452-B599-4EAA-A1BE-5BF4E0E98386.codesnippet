@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>alertWithTextfield</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"&lt;#title#&gt;" message:@"&lt;#message#&gt;" preferredStyle:UIAlertControllerStyleAlert];
+    [alert addTextFieldWithConfigurationHandler:^(UITextField * _Nonnull textField) {
+        textField.placeholder = @"&lt;#placeholder#&gt;";
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(alertTextFieldDidChange:) name:UITextFieldTextDidChangeNotification object:textField];
+    }];
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [[NSNotificationCenter defaultCenter] removeObserver:self name:UITextFieldTextDidChangeNotification object:nil];
+        UITextField *textField = alert.textFields.firstObject;
+    }];
+    [alert addAction:okAction];
+    okAction.enabled = NO;
+    [self presentViewController:alert animated:YES completion:nil];
+//    - (void)alertTextFieldDidChange:(NSNotification *)notification{
+//        UIAlertController *alertController = (UIAlertController *)self.presentedViewController;
+//        if (alertController) {
+//            UITextField *login = alertController.textFields.firstObject;
+//            UIAlertAction *okAction = alertController.actions.lastObject;
+//            okAction.enabled = login.text.length &gt; 2;
+//        }
+//    }
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>CF425452-B599-4EAA-A1BE-5BF4E0E98386</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>alertWithTextfield</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

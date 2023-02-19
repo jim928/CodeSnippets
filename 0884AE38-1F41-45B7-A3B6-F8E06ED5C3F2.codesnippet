@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>drawrect-rect</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//矩形，并填弃颜色
+    UIColor * aColor = [UIColor blueColor];//blue蓝色
+    CGContextSetLineWidth(context, 2.0);//线的宽度
+    CGContextSetStrokeColorWithColor(context, aColor.CGColor);//线框颜色
+    aColor = [UIColor yellowColor];
+    CGContextSetFillColorWithColor(context, aColor.CGColor);//填充颜色
+    CGContextAddRect(context,CGRectMake(140, 120, 60, 30));//画方框
+    CGContextDrawPath(context, kCGPathFillStroke);//绘画路径</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>0884AE38-1F41-45B7-A3B6-F8E06ED5C3F2</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>drawrect-rect</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

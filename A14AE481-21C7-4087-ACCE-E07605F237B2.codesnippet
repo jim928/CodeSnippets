@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>saveimagetoalbum</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>UIImageWriteToSavedPhotosAlbum(image , self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+- (void)image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *)contextInfo
+{
+    if (error) {
+        [self makeToast:[NSString stringWithFormat:@"保存失败，%@",error.description] duration:1.5 position:CSToastPositionCenter];
+    } else {
+        [self makeToast:@"保存成功" duration:1.5 position:CSToastPositionCenter];
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>A14AE481-21C7-4087-ACCE-E07605F237B2</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>saveimagetoalbum</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

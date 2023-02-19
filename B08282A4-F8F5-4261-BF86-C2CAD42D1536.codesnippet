@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>enum-example-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>enum Environment {
+    case development
+    case distribution
+}
+// 映射到整型
+enum Movement: Int {
+    case Left = 0
+    case Right = 1
+    case Top = 2
+    case Bottom = 3
+}
+// 同样你可以与字符串一一对应
+enum House: String {
+    case Baratheon = "Ours is the Fury"
+    case Greyjoy = "We Do Not Sow"
+    case Martell = "Unbowed, Unbent, Unbroken"
+    case Stark = "Winter is Coming"
+    case Tully = "Family, Duty, Honor"
+    case Tyrell = "Growing Strong"
+}
+//let bestHouse = House.Stark
+//print(bestHouse.rawValue)
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>B08282A4-F8F5-4261-BF86-C2CAD42D1536</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>enum-example-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

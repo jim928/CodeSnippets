@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>nextBtninit</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+    btn.layer.masksToBounds = YES;
+    btn.layer.cornerRadius = 5;
+    btn.titleLabel.font = [UIFont fontPFSB16];
+    [btn setTitle:@"下一步" forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor lightGrayColor] forState:UIControlStateDisabled];
+    [btn setBackgroundImage:[UIImage createImageWithColor:[UIColor font_goldColor]] forState:UIControlStateNormal];
+    [btn setBackgroundImage:[UIImage createImageWithColor:[UIColor font_lightLineGrayColor]] forState:UIControlStateDisabled];</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>C593DD71-2027-4112-A9FE-C28BCA3976C2</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>nextBtninit</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

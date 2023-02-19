@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>springanimation</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//Damping:阻尼系数，0-1，越小弹的越快。Velocity:初始速度，越大幅度越大
+[UIView animateWithDuration:&lt;#0.5#&gt; delay:&lt;#0#&gt; usingSpringWithDamping:&lt;#0.4#&gt; initialSpringVelocity:&lt;#10#&gt; options:&lt;#UIViewAnimationOptionCurveEaseIn#&gt; animations:&lt;#^(void)animations#&gt; completion:&lt;#^(BOOL finished)completion#&gt;]</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>27F74539-10DE-4F33-9BA7-1F4DCF9E3FAC</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>弹性动画(springanimation)</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>gao-jie-han-shu-高阶函数</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//高阶函数:用函数作为参数或返回值的函数
+//map 遍历每个元素，将元素做处理后 输出一个新的元素组成的数组。
+//map 也可用函数作为参数 方便多处调用
+/*
+ let numberArray = [1,2,3,4,5]
+ func fmap(a : Int) -&gt; Int{
+ return a + 10
+ }
+ var result = numberArray.map(fmap)
+ */
+
+//filter 遍历每个元素，将符合条件的元素拿出来组成一个新的数组。
+
+//reduce 给定一个初始值，然后遍历每个元素 将元素的某个变量累加或其他操作到初始值里，最后得到改变后的初始值。
+/*
+ let names = ["Taylor", "Paul", "Adele"]
+ var num = 10
+ num = names.reduce(num) { $0 + $1.count }//$0为外部初始值，$1为元素
+ print(num)
+ 
+ let numbers = [1, 2, 3, 4, 5]
+ let c = City.init(num: 10)
+ let sum = numbers.reduce(into: c) { result, number in
+     result.num += number
+ }
+ print(sum)//City(num: 25)
+ */</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>2225E338-D72A-4B29-ACE2-F61F023DE2BA</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>gao-jie-han-shu-高阶函数</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>UIScrollBannerView-Example</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>UIScrollBannerView.configCellUI = { contentView,imgView in
+    imgView.corner(radius: 5).csLeftRight(constant: 14).csFullfillVertical()
+}
+let v = UIScrollBannerView().addTo(self).csFullfillHorizontal().csTop().csHeight(widthForRate(nowH: ScreenWidth, w: 144, h: 375))
+v.setImgUrls(urls: ["http://96825edge.man077.com///prod/banner/m_f205dcaf4399a95e1601dbbc4289f65da3824431.jpg","http://96825edge.man077.com///prod/banner/m_277855b0a789286717a9426bfdd0f98270f6ec87.jpg","http://96825edge.man077.com///prod/banner/m_d1071a06b6762dc8b3e11b9900f1635eb1c7a7a8.jpg","http://96825edge.man077.com///prod/banner/m_cb6ec2f6f748ddc6ed87b3efc5b24d176c5415ed.jpg","http://96825edge.man077.com///prod/banner/m_a3e9ba946ef9cf984f491e6ced9536ec9b2995bf.jpg","http://96825edge.man077.com///prod/banner/m_3bfc2db141a7220a6dd95c16e2718ebc80c463e7.jpg","http://96825edge.man077.com///prod/banner/m_afe1355fdbd855934d3bb4b6d0ba8b1b1b0891cd.jpg","http://96825edge.man077.com///prod/banner/m_6d0cf4422c6254f813307115d871fd0cbf6d181b.jpg","http://96825edge.man077.com///prod/banner/m_3e61fbd4f41b73461af20d9c8b3424bb41b6a6e7.jpg"], configImg: { (imgView, str, index) in
+    imgView.sd_setImage(with: URL.init(string: str ?? ""), completed: nil)
+}) { (index, url) in
+    print("zlog",#file,#function,#line,index,url)
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>E185BAF2-F62B-495C-B901-32FB1CBF0F9B</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>UIScrollBannerView-Example</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

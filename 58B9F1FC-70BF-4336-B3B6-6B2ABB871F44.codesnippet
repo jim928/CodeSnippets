@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>alert-textfield-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>let alert = UIAlertController.init(title: nil, message: "&lt;#msg#&gt;", preferredStyle: .alert)
+        alert.addTextField { (tfield) in
+            tfield.font = pfr16
+            tfield.textAlignment = .center
+            tfield.placeholder = "&lt;#placehold#&gt;"
+        }
+        alert.addAction(UIAlertAction.init(title: "确定", style: .default, handler: { (action) in
+            if let tfield = alert.textFields?.first {
+                if let text = tfield.text {
+                    if text.replacingOccurrences(of: " ", with: "").count == 0 {
+                        showToast(toast: "没有菜名无法修改")
+                        return
+                    }
+                }
+            }
+            
+            self.tableView.reloadData()
+        }))
+        alert.addAction(UIAlertAction.init(title: "取消", style: .cancel, handler: nil))
+        self.viewController?.present(alert, animated: true, completion: nil)</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>58B9F1FC-70BF-4336-B3B6-6B2ABB871F44</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>alert-textfield-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

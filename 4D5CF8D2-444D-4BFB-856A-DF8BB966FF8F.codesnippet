@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>tabbar-圆角加阴影</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>    //圆角的图片+阴影
+    //设置背景图片 图片可以是圆角
+    tabbarController.tabBar.shadowImage = UIImage()
+    tabbarController.tabBar.backgroundImage = "tabbar-bg".toImg()?.stretchableImage(withLeftCapWidth: 30, topCapHeight: 20)
+    let tabBar = tabbarController.tabBar
+    //添加阴影
+    tabBar.layer.shadowColor = UIColor.lightGray.cgColor
+    tabBar.layer.shadowOffset = CGSize(width: 0, height: -5)
+    tabBar.layer.shadowOpacity = 0.3
+    tabBar.layer.shadowRadius = 6
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>4D5CF8D2-444D-4BFB-856A-DF8BB966FF8F</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>tabbar-圆角加阴影</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>tabbar-圆角加阴影</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

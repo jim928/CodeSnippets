@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>block-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>/* 调用示例
+ loadData { (result) in
+ print("获取json信息\(result)")
+ }
+ */
+func loadData(completion: @escaping (_ result: [String])-&gt;()) -&gt; () {
+    DispatchQueue.global().async {
+        print("耗时操作\(Thread.current)")
+        Thread.sleep(forTimeInterval: 1.0);
+        let json=["12","23","34"]
+        DispatchQueue.main.async(execute: {
+            print("主线程\(Thread.current)")
+            completion(json)
+        })
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>6571508D-286A-4EA1-9AB2-C6E8F93B940B</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>swift版本block 闭包示例</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>block-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

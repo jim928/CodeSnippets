@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>openpannel-mac</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>let panel = NSOpenPanel()
+panel.prompt = "确定";
+panel.message = "选择swagger的json文件"
+panel.canChooseDirectories = false
+panel.canChooseFiles = true
+panel.allowsMultipleSelection = false
+panel.allowedFileTypes = ["json"]
+panel.beginSheetModal(for: NSApp.mainWindow ?? NSWindow()) { (response) in
+    if response == .OK {
+        print(panel.urls)
+        if let url = panel.urls.first ,let data = try? Data(contentsOf: url){
+            
+        }
+    }else if response == .cancel {
+        print("cancel")
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>F773050A-1D69-448C-BE21-9D6C1B9DF111</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>openpanel-mac</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

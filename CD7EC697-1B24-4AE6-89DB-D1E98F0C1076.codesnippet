@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>observe-swift</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//getByLoginName 属性需要标记为 @objc dynamic，只有class才能用@objc
+        var ob : NSKeyValueObservation?
+        ob = app.observe(\.getByLoginName, options: [.new]) { (app, change) in
+            print("zlog",#file,#function,#line,app.getByLoginName?.body?.lastLoginDate)
+        }
+deinit {
+    if let ob = ob {
+        ob.invalidate()
+        removeObserver(ob, forKeyPath: "getByLoginName")
+        self.ob = nil
+    }
+}
+
+
+        app.addObserver(self, forKeyPath: "getByLoginName", options: [.new], context: nil)
+        override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+            if keyPath == "getByLoginName" {
+                print("zlog",#file,#function,#line)
+            }
+        }
+deinit {
+    app.removeObserver(self, forKeyPath: "getByLoginName")
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>CD7EC697-1B24-4AE6-89DB-D1E98F0C1076</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>observe-swift</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

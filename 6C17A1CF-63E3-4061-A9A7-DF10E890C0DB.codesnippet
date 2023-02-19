@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>UITitleView-example</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>let tview = UITitleView.init(num: 3, configBtnClosure: { (view, btn,index) in
+            btn.csFullfill()
+            btn.wTitle("按钮").wFont(pfr20).wTitleColor(.blue)
+            btn.setTitleColor(.red, for: .selected)
+        }, configIndiClosure: { (indicator) -&gt; (CGFloat, CGFloat?) in
+            indicator.backgroundColor = .red
+            indicator.csHeight(3)
+            indicator.corner(radius: 1.5)
+            return (-10,30)
+            return (-10,nil)
+        }) { (index) in
+            print(index)
+        }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>6C17A1CF-63E3-4061-A9A7-DF10E890C0DB</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>UITitleView-example</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

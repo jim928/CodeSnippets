@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>view-rotaion-animation</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>[UIView animateWithDuration:0.2f animations:^{
+    self.triangleImView.transform = CGAffineTransformMakeRotation(M_PI-0.001);
+    //归位动画的时候 总是选择旋转最小角度到原位，如果等于180度，则仍然会选择顺时针，所以这里要小于180度 才能达到逆时针归位的效果
+}];
+[UIView animateWithDuration:0.2f animations:^{
+    self.triangleImView.transform = CGAffineTransformIdentity;
+}];
+
+//无限旋转
+ - (void)startAnimationRotation:(UIButton *)button{
+     CABasicAnimation *basicAnimation = [CABasicAnimation animationWithKeyPath:@"transform.rotation"];
+     basicAnimation.toValue= @(M_PI * 2);
+     basicAnimation.repeatCount = 1000;
+     basicAnimation.duration = 1.0;
+     basicAnimation.removedOnCompletion = NO;
+     basicAnimation.fillMode = kCAFillModeForwards;
+     [button.imageView.layer addAnimation:basicAnimation forKey:self.refreshKey];
+ }
+
+ - (void)stopAnimationRotation{
+     [self.refreshButton.imageView.layer removeAnimationForKey:self.refreshKey];
+ }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>F51911C8-C6C8-4E7C-A835-3E0B078F657A</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Generic</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>view旋转动画</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>view-rotation-animation</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

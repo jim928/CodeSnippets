@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>scrollviewzoom</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>CodeBlock</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>    UIImageView *imgView = [[UIImageView alloc]init];
+    UIScrollView *scrollView = [[UIScrollView alloc]initWithFrame:&lt;#CGRect#&gt;];;
+    scrollView.contentSize = &lt;#Size#&gt;;
+    scrollView.delegate = self;
+    scrollView.minimumZoomScale = 1;
+    scrollView.maximumZoomScale = 2;
+    scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.showsHorizontalScrollIndicator = NO;
+    [scrollView addSubview:imgView];
+////UIScrollview的Delegate方法，需要设置才能实现放大缩小功能
+//- (UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView {
+//    UIView *subView = [[scrollView subviews]firstObject];
+//    return subView;
+//}
+//- (void)scrollViewDidEndZooming:(UIScrollView *)scrollView withView:(UIView *)view atScale:(CGFloat)scale {
+//}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>A58D6994-C9CB-4B39-AB10-40475EEA065A</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>scrollviewzoom</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
