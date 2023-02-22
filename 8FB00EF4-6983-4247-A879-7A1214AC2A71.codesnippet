@@ -3,24 +3,24 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>string</string>
+	<string>vectorstring</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>std::string &lt;#str#&gt; = "&lt;#value#&gt;";</string>
+	<string>std::vector&lt;std::string&gt; &lt;#allCombineTwo#&gt; = {}&lt;#;#&gt;</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>C5804845-CCC5-45DA-B780-F3945653E524</string>
+	<string>8FB00EF4-6983-4247-A879-7A1214AC2A71</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.C-Plus-Plus</string>
 	<key>IDECodeSnippetSummary</key>
-	<string>create a string in c++</string>
+	<string>create vector string </string>
 	<key>IDECodeSnippetTitle</key>
-	<string>std::string</string>
+	<string>std::vector&lt;std::string&gt;</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>
