@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>flutterboostconfig</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//flutterboost集成
+/*
+ 1,create module
+ flutter create --template module im_app_flutter
+ 2,config yaml
+ flutter_boost:
+   git:
+     url: 'https://github.com/alibaba/flutter_boost.git'
+     ref: '4.4.0'
+ 3,main.dart
+ import 'package:flutter/cupertino.dart';
+ import 'package:flutter/material.dart';
+ import 'package:flutter_boost/flutter_boost.dart';
+
+ void main() {
+   CustomFlutterBinding();
+   runApp(const MyBoostApp());
+ }
+
+ class CustomFlutterBinding extends WidgetsFlutterBinding
+     with BoostFlutterBinding {}
+
+ class MyBoostApp extends StatefulWidget {
+   const MyBoostApp({super.key});
+
+   @override
+   _MyBoostAppState createState() =&gt; _MyBoostAppState();
+ }
+
+ class _MyBoostAppState extends State&lt;MyBoostApp&gt; {
+   Map&lt;String, FlutterBoostRouteFactory&gt; routerMap = {
+     'mainPage': (RouteSettings settings, String? uniqueId) {
+       return CupertinoPageRoute(
+           settings: settings,
+           builder: (_) {
+             Map&lt;String, dynamic&gt; map =
+                 settings.arguments as Map&lt;String, dynamic&gt;;
+             String data = map['data'] as String;
+             return MainPage(
+               data: data,
+             );
+           });
+     },
+     'simplePage': (settings, uniqueId) {
+       return CupertinoPageRoute(
+           settings: settings,
+           builder: (_) {
+             Map&lt;String, dynamic&gt; map =
+                 settings.arguments as Map&lt;String, dynamic&gt;;
+             String data = map['data'] as String;
+             return MaterialApp(
+               title: 'Flutter Demo',
+               theme: ThemeData(
+                 colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+                 useMaterial3: true,
+               ),
+               home: SimplePage(
+                 title: '首页',
+                 data: data,
+               ),
+             );
+           });
+     },
+     'secondPage': (settings, uniqueId) {
+       return CupertinoPageRoute(
+           settings: settings,
+           builder: (_) {
+             Map&lt;String, dynamic&gt; map =
+                 settings.arguments as Map&lt;String, dynamic&gt;;
+             String data = map['data'] as String;
+             return MaterialApp(
+               title: 'Flutter Demo',
+               theme: ThemeData(
+                 colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+                 useMaterial3: true,
+               ),
+               home: SecondPage(
+                 title: '第二页',
+                 data: data,
+               ),
+             );
+           });
+     },
+   };
+   FlutterBoostRouteFactory defaultPage =
+       (RouteSettings settings, String? uniqueId) {
+     return CupertinoPageRoute(
+         settings: settings,
+         builder: (_) {
+           return const MainPage();
+         });
+   };
+
+   Route&lt;dynamic&gt;? routeFactory(RouteSettings settings, String? uniqueId) {
+     if (routerMap[settings.name] == null) {
+       return defaultPage(settings, uniqueId);
+     }
+     FlutterBoostRouteFactory func =
+         routerMap[settings.name] as FlutterBoostRouteFactory;
+     return func(settings, uniqueId);
+   }
+
+   Widget appBuilder(Widget home) {
+     return MaterialApp(
+       home: home,
+       debugShowCheckedModeBanner: true,
+       builder: (_, __) {
+         return home;
+       },
+     );
+   }
+
+   @override
+   Widget build(BuildContext context) {
+     return FlutterBoostApp(
+       routeFactory,
+       appBuilder: appBuilder,
+     );
+   }
+ }
+
+ class MainPage extends StatelessWidget {
+   const MainPage({super.key, this.data});
+
+   final dynamic data;
+
+   @override
+   Widget build(BuildContext context) {
+     return Scaffold(
+       body: Center(child: Text('Main Page \n $data')),
+     );
+   }
+ }
+
+ class SimplePage extends StatefulWidget {
+   const SimplePage({super.key, required this.title, this.data});
+
+   final String title;
+   final dynamic data;
+
+   @override
+   State&lt;SimplePage&gt; createState() =&gt; _SimplePageState();
+ }
+
+ class _SimplePageState extends State&lt;SimplePage&gt; {
+   int _counter = 0;
+
+   void _incrementCounter() {
+     setState(() {
+       _counter++;
+     });
+   }
+
+   late TextEditingController textEditController;
+
+   @override
+   void initState() {
+     super.initState();
+     FlutterDataCenter.data = widget.data;
+     textEditController = TextEditingController();
+     textEditController.addListener(() {
+       FlutterDataCenter.data = textEditController.text;
+     });
+   }
+
+   @override
+   Widget build(BuildContext context) {
+     textEditController.text = FlutterDataCenter.data ?? "";
+
+     return Scaffold(
+       appBar: AppBar(
+         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+         title: Text(widget.title),
+         leading: GestureDetector(onTap: (){
+           Map&lt;String, Object&gt; result = {'data': "result_text_from_simple_page"};
+           BoostNavigator.instance.pop(result);
+         },child: const Icon(Icons.arrow_back)),
+         actions: [
+           GestureDetector(
+             onTap: () {
+               FlutterDataCenter.data = textEditController.text;
+               Navigator.push(
+                   context,
+                   MaterialPageRoute(
+                       builder: (BuildContext context) =&gt;
+                           const SecondPage(title: "第二页"))).then((value) {
+                 setState(() {});
+               });
+             },
+             child: const Text(
+               '第二页',
+               style: TextStyle(color: Colors.white),
+             ),
+           )
+         ],
+       ),
+       body: Center(
+         child: Column(
+           mainAxisAlignment: MainAxisAlignment.start,
+           crossAxisAlignment: CrossAxisAlignment.start,
+           children: &lt;Widget&gt;[
+             const Text(
+               'You have pushed the button this many times:',
+             ),
+             Text(
+               '$_counter',
+               style: Theme.of(context).textTheme.headlineMedium,
+             ),
+             TextField(
+               decoration: const InputDecoration(labelText: '编辑字符串：'),
+               controller: textEditController,
+               autofocus: true,
+             )
+           ],
+         ),
+       ),
+       floatingActionButton: FloatingActionButton(
+         onPressed: _incrementCounter,
+         tooltip: 'Increment',
+         child: const Icon(Icons.add),
+       ),
+     );
+   }
+ }
+
+ class FlutterDataCenter {
+   static String _data = "";
+
+   static String get data =&gt; _data;
+
+   static set data(String value) {
+     _data = value;
+     BoostChannel.instance.sendEventToNative("eventToNative", {"data": _data});
+   }
+ }
+
+ class SecondPage extends StatefulWidget {
+   const SecondPage({super.key, required this.title, this.data});
+
+   final String title;
+   final dynamic data;
+
+   @override
+   State&lt;SecondPage&gt; createState() =&gt; _SecondPageState();
+ }
+
+ class _SecondPageState extends State&lt;SecondPage&gt; {
+   late TextEditingController textEditController;
+
+   @override
+   void initState() {
+     super.initState();
+     if (widget.data != null) {
+       FlutterDataCenter.data = widget.data;
+     }
+     textEditController = TextEditingController();
+     textEditController.text = FlutterDataCenter.data ?? "";
+     textEditController.addListener(() {
+       FlutterDataCenter.data = textEditController.text;
+     });
+   }
+
+   @override
+   Widget build(BuildContext context) {
+     return Scaffold(
+       appBar: AppBar(
+         backgroundColor: Colors.blue,
+         title: Text(widget.title),
+         leading: GestureDetector(
+           onTap: (){
+             Map&lt;String, Object&gt; result = {'data': "result_text_from_second_page"};
+             BoostNavigator.instance.pop(result);
+           },
+           child: const Icon(Icons.arrow_back),
+         )
+       ),
+       body: Center(
+         child: Column(
+           mainAxisAlignment: MainAxisAlignment.start,
+           crossAxisAlignment: CrossAxisAlignment.start,
+           children: &lt;Widget&gt;[
+             TextField(
+               decoration: const InputDecoration(labelText: '再次编辑字符串：'),
+               controller: textEditController,
+               autofocus: true,
+             )
+           ],
+         ),
+       ),
+     );
+   }
+ }
+
+
+ 4,podfile
+ flutter_application_path = '../im_app_flutter'
+ load File.join(flutter_application_path, '.ios', 'Flutter', 'podhelper.rb')
+
+ target 'imappios' do
+   # Comment the next line if you don't want to use dynamic frameworks
+   use_frameworks!
+
+   # Pods for imapp
+   pod 'SnapKit'
+
+
+   install_all_flutter_pods(flutter_application_path)
+   post_install do |installer|
+     flutter_post_install(installer) if defined?(flutter_post_install)
+   end
+
+ end
+ 
+ 5,AppDelegate.swift
+ import UIKit
+ import Flutter
+ import flutter_boost
+
+ var rootTabVC = UITabBarController()
+ var rootWindow:UIWindow?
+
+ @UIApplicationMain
+ class AppDelegate: UIResponder, UIApplicationDelegate ,UITabBarControllerDelegate{
+     
+     var window: UIWindow?
+     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -&gt; Bool {
+         
+         self.window = UIWindow(frame: UIScreen.main.bounds)
+         rootWindow = self.window
+         self.window?.makeKeyAndVisible()
+         
+         let vc1 = HomeVC()
+         let vc2 = ContactVC()
+         let vc3 = SettingVC()
+         
+         vc1.tabBarItem = UITabBarItem(title: "聊天", image: UIImage(systemName: "ellipsis.message.fill"), tag: 0)
+         vc2.tabBarItem = UITabBarItem(title: "联系人", image: UIImage(systemName: "person.crop.circle"), tag: 1)
+         vc3.tabBarItem = UITabBarItem(title: "设置", image: UIImage(systemName: "gearshape.fill"), tag: 2)
+         
+         
+         self.window?.rootViewController = rootTabVC
+         
+         rootTabVC.setViewControllers([UINavigationController.init(rootViewController: vc1),
+                                       UINavigationController.init(rootViewController: vc2),
+                                       UINavigationController.init(rootViewController: vc3)], animated: true)
+         
+         rootTabVC.view.backgroundColor = .white
+         rootTabVC.tabBar.backgroundColor = .lightGray.withAlphaComponent(0.2)
+         rootTabVC.delegate = self
+         
+         //创建代理，做初始化操作
+         let delegate = BoostDelegate.shared
+         FlutterBoost.instance().setup(application, delegate: delegate) { engine in
+             
+         }
+         
+         return true
+     }
+     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -&gt; Bool {
+         if (tabBarController.viewControllers?.firstIndex(of: viewController) == 1){
+             ContactTool.pickContact(context: tabBarController) { (info) in
+                 print(info as Any)
+             }
+             return false
+         }
+         return true
+     }
+ }
+
+ 6,HomeVC.swift
+ import UIKit
+ import SnapKit
+ import flutter_boost
+
+ class HomeVC: UIViewController {
+     
+     //同样声明一个对象用来存删除的函数
+     var removeListener:FBVoidCallback?
+     
+     override func viewDidLoad() {
+         super.viewDidLoad()
+         
+         self.navigationItem.title = "Swift";
+         let addNewItem = UIBarButtonItem(systemItem: .add, primaryAction: nil, menu: createMenuIOS13())
+         navigationItem.rightBarButtonItem = addNewItem
+         
+         
+         //这里注册事件监听，监听flutter发送到iOS的事件
+         self.removeListener =  FlutterBoost.instance().addEventListener({[weak self] key, dic in
+             //注意，如果这里self持有removeListener，而这个闭包中又有self的话，要用weak self
+             //否则就有self-&gt;removeListener-&gt;self 循环引用
+             
+             //在这里处理你的事件
+             print("removeListener \(key ?? "nil") , \(dic?["data"] ?? "nil")")
+             self?.navigationItem.title = "\(dic?["data"] ?? "Swfit")"
+         }, forName: "eventToNative")
+         
+         let _ = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(countDown), userInfo: nil, repeats: false)
+     }
+     @objc func countDown(){
+         FlutterBoost.instance().sendEventToFlutter(with: "eventToFlutter", arguments: ["key":"value-eventToFlutter"])
+         FlutterBoost.instance().sendResultToFlutter(withPageName: "simplePage", arguments: ["key":"value-resultToFlutter"])
+     }
+     
+     func createMenuIOS13() -&gt; UIMenu {
+         // 第一个菜单
+         let flutterBtn = UIAction(title: "Flutter首页", image: UIImage(systemName: "info.circle")) { _ in
+             self.buttonClick(send: UIButton())
+         }
+         // 第二个菜单
+         let flutterSecondBtn = UIAction(title: "Flutter第二页", image: UIImage(systemName: "info.circle")) { _ in
+             self.buttonClickSecond(send: UIButton())
+         }
+         // 第三个菜单
+         let flutterThirdBtn = UIAction(title: "传参到flutter", image: UIImage(systemName: "info.circle")) { _ in
+             FlutterBoost.instance().sendEventToFlutter(with: "from_app", arguments: ["key1":"value1"])
+         }
+         let menuActions = [flutterBtn, flutterSecondBtn, flutterThirdBtn]
+         let addNewMenu = UIMenu(
+             title: "",
+             children: menuActions)
+         return addNewMenu
+     }
+     
+     
+     @objc func buttonClick(send:UIButton) {
+         BoostDelegate.shared.navigationController = self.navigationController
+         let options = FlutterBoostRouteOptions()
+         options.pageName = "simplePage"
+         options.arguments = ["data" :self.navigationItem.title ?? ""]
+         
+         //页面是否透明（用于透明弹窗场景），若不设置，默认情况下为true
+         options.opaque = true
+         
+         //这个是push操作完成的回调，而不是页面关闭的回调！！！！
+         options.completion = { completion in
+             print("open operation is completed")
+         }
+         //这个是页面关闭并且返回数据的回调，回调实际需要根据您的Delegate中的popRoute来调用
+         options.onPageFinished = { dic in
+              
+         }
+         
+         self.hidesBottomBarWhenPushed = true
+         FlutterBoost.instance().open(options)
+         self.hidesBottomBarWhenPushed = false
+     }
+     @objc func buttonClickSecond(send:UIButton) {
+         BoostDelegate.shared.navigationController = self.navigationController
+         let options = FlutterBoostRouteOptions()
+         options.pageName = "secondPage"
+         options.arguments = ["data" :self.navigationItem.title ?? ""]
+         //页面是否透明（用于透明弹窗场景），若不设置，默认情况下为true
+         options.opaque = true
+         //这个是push操作完成的回调，而不是页面关闭的回调！！！！
+         options.completion = { completion in
+             print("open operation is completed")
+         }
+         //这个是页面关闭并且返回数据的回调，回调实际需要根据您的Delegate中的popRoute来调用
+         options.onPageFinished = { dic in
+         }
+         
+         self.hidesBottomBarWhenPushed = true
+         FlutterBoost.instance().open(options)
+         self.hidesBottomBarWhenPushed = false
+     }
+ }
+
+
+ public extension UIColor {
+     convenience init(colorHex hex: UInt) {
+         self.init(red: CGFloat((hex &amp; 0xFF0000) &gt;&gt; 16) / 255,
+                   green: CGFloat((hex &amp; 0x00FF00) &gt;&gt; 8) / 255,
+                   blue: CGFloat(hex &amp; 0x0000FF) / 255, alpha: 1)
+     }
+ }
+ 
+ 7,BoostDelegate.swift
+ import UIKit
+ import flutter_boost
+
+ class BoostDelegate: NSObject,FlutterBoostDelegate {
+     
+     public static let shared = BoostDelegate()
+
+     ///您用来push的导航栏
+     var navigationController:UINavigationController?
+
+     ///用来存返回flutter侧返回结果的表
+     var resultTable:Dictionary&lt;String,([AnyHashable:Any]?)-&gt;Void&gt; = [:];
+
+     func pushNativeRoute(_ pageName: String!, arguments: [AnyHashable : Any]!) {
+
+         //可以用参数来控制是push还是pop
+         let isPresent = arguments["isPresent"] as? Bool ?? false
+         let isAnimated = arguments["isAnimated"] as? Bool ?? true
+         //这里根据pageName来判断生成哪个vc，这里给个默认的了
+         var targetViewController = UIViewController()
+
+         if(isPresent){
+             self.navigationController?.present(targetViewController, animated: isAnimated, completion: nil)
+         }else{
+             self.navigationController?.pushViewController(targetViewController, animated: isAnimated)
+         }
+     }
+
+     func pushFlutterRoute(_ options: FlutterBoostRouteOptions!) {
+         let vc:FBFlutterViewContainer = FBFlutterViewContainer()
+         vc.setName(options.pageName, uniqueId: options.uniqueId, params: options.arguments,opaque: options.opaque)
+
+         //用参数来控制是push还是pop
+         let isPresent = (options.arguments?["isPresent"] as? Bool)  ?? false
+         let isAnimated = (options.arguments?["isAnimated"] as? Bool) ?? true
+
+         //对这个页面设置结果
+         resultTable[options.pageName] = options.onPageFinished;
+
+         //如果是present模式 ，或者要不透明模式，那么就需要以present模式打开页面
+         if(isPresent || !options.opaque){
+             self.navigationController?.present(vc, animated: isAnimated, completion: nil)
+         }else{
+             self.navigationController?.pushViewController(vc, animated: isAnimated)
+         }
+     }
+
+     func popRoute(_ options: FlutterBoostRouteOptions!) {
+         //如果当前被present的vc是container，那么就执行dismiss逻辑
+         if let vc = self.navigationController?.presentedViewController as? FBFlutterViewContainer,vc.uniqueIDString() == options.uniqueId{
+
+             //这里分为两种情况，由于UIModalPresentationOverFullScreen下，生命周期显示会有问题
+             //所以需要手动调用的场景，从而使下面底部的vc调用viewAppear相关逻辑
+             if vc.modalPresentationStyle == .overFullScreen {
+
+                 //这里手动beginAppearanceTransition触发页面生命周期
+                 self.navigationController?.topViewController?.beginAppearanceTransition(true, animated: false)
+
+                 vc.dismiss(animated: true) {
+                     self.navigationController?.topViewController?.endAppearanceTransition()
+                 }
+             }else{
+                 //正常场景，直接dismiss
+                 vc.dismiss(animated: true, completion: nil)
+             }
+         }else{
+             self.navigationController?.popViewController(animated: true)
+         }
+         //否则直接执行pop逻辑
+         //这里在pop的时候将参数带出,并且从结果表中移除
+         if let onPageFinshed = resultTable[options.pageName] {
+             onPageFinshed(options.arguments)
+             resultTable.removeValue(forKey: options.pageName)
+         }
+     }
+ }
+
+ */
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>2352CC9F-96D9-467E-BF08-9BE2581BF077</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>flutterBoost接入</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
