@@ -10,8 +10,9 @@
 	</array>
 	<key>IDECodeSnippetContents</key>
 	<string>let &lt;#label#&gt; = UILabel()
-            .font = UIFont.systemFont(ofSize: &lt;#T##CGFloat#&gt;)
-            .textColor = &lt;#color#&gt;</string>
+&lt;#label#&gt;.font = UIFont.systemFont(ofSize: &lt;#T##CGFloat#&gt;)
+&lt;#label#&gt;.textColor = &lt;#color#&gt;
+&lt;#label#&gt;.text = &lt;#code#&gt;</string>
 	<key>IDECodeSnippetIdentifier</key>
 	<string>1917DFC3-5034-4A9C-A987-43540771B309</string>
 	<key>IDECodeSnippetLanguage</key>

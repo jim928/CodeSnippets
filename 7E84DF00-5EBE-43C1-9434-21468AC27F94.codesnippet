@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>let &lt;#btn#&gt; = UIButton()
+&lt;#btn#&gt;.setTitle("继续", for: .normal)
+self.view.addSubview(&lt;#btn#&gt;)
+&lt;#btn#&gt;.layer.cornerRadius = 12
+&lt;#btn#&gt;.setBackgroundColor(UIColor(colorHex: 0x007AFF), for: .normal)
+&lt;#btn#&gt;.setBackgroundColor(UIColor(colorHex: 0xeeeeee), for: .disabled)
+&lt;#btn#&gt;.setTitleColor(.white, for: .normal)
+&lt;#btn#&gt;.setTitleColor(UIColor(colorHex: 0x121212).withAlphaComponent(0.48), for: .disabled)
+&lt;#btn#&gt;.addTarget(self, action: #selector(btnTap), for: .touchUpInside)
+&lt;#btn#&gt;.snp.makeConstraints { make in
+        make.top.equalTo(line1.snp.bottom).offset(60)
+        make.left.equalToSuperview().offset(20)
+        make.right.equalToSuperview().offset(-20)
+        make.height.equalTo(48)
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>7E84DF00-5EBE-43C1-9434-21468AC27F94</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>My Code Snippet</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>

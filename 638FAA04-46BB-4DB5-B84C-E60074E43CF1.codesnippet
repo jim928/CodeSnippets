@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string></string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>extension UIButton {
+    
+    /// Sets the color of the background to use for the specified state.
+    ///
+    /// In general, if a property is not specified for a state, the default is to use the [normal](apple-reference-documentation://hsOohbJNGp) value.
+    /// If the normal value is not set, then the property defaults to a system value.
+    /// Therefore, at a minimum, you should set the value for the normal state.
+    /// - Author: [Dongkyu Kim](https://gist.github.com/stleamist)
+    /// - Parameters:
+    ///     - color: The color of the background to use for the specified state
+    ///     - cornerRadius: The radius, in points, for the rounded corners on the button. The default value is 8.0.
+    ///     - state: The state that uses the specified color. The possible values are described in [UIControl.State](apple-reference-documentation://hs-yI2haNm).
+    ///
+    func setBackgroundColor(_ color: UIColor?, cornerRadius: CGFloat = 8.0, for state: UIControl.State) {
+        
+        guard let color = color else {
+            self.setBackgroundImage(nil, for: state)
+            return
+        }
+        
+        let length = 1 + cornerRadius * 2
+        let size = CGSize(width: length, height: length)
+        let rect = CGRect(origin: .zero, size: size)
+        
+        var backgroundImage = UIGraphicsImageRenderer(size: size).image { (context) in
+            // Fill the square with the black color for later tinting.
+            color.setFill()
+            UIBezierPath(roundedRect: rect, cornerRadius: cornerRadius).fill()
+        }
+        
+        backgroundImage = backgroundImage.resizableImage(withCapInsets: UIEdgeInsets(top: cornerRadius, left: cornerRadius, bottom: cornerRadius, right: cornerRadius))
+        
+        // Apply the `color` to the `backgroundImage` as a tint color
+        // so that the `backgroundImage` can update its color automatically when the currently active traits are changed.
+        if #available(iOS 13.0, *) {
+            backgroundImage = backgroundImage.withTintColor(color, renderingMode: .alwaysOriginal)
+        }
+        
+        self.setBackgroundImage(backgroundImage, for: state)
+    }
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>638FAA04-46BB-4DB5-B84C-E60074E43CF1</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>btnbackgroundcolorforstate</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
