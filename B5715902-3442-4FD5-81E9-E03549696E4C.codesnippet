@@ -3,26 +3,27 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>sharedInstance-swift</string>
+	<string>snp</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>    static let shared = &lt;#CoreManager#&gt;()
-    //@objc public static let shared = RoadManager() &lt;#//framework 允许外部调用#&gt;
-    private init() {}</string>
+	<string>&lt;#telIcon#&gt;.snp.makeConstraints { make in
+    make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(35)
+    &lt;#code#&gt;     
+}</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>1FC3F885-9F0C-4002-907E-C96FE5722648</string>
+	<string>B5715902-3442-4FD5-81E9-E03549696E4C</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
-	<string></string>
+	<string>snp创建约束</string>
 	<key>IDECodeSnippetTitle</key>
-	<string>sharedInstance-swift</string>
+	<string>snpmake</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>
-	<integer>2</integer>
+	<integer>0</integer>
 </dict>
 </plist>
