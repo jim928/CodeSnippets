@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>tableviewswipactions</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -&gt; UISwipeActionsConfiguration? {
+    let hideBtn = UIContextualAction(style: .normal, title: nil) { (action, view, completion) in
+        dataList.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        completion(false)
+    }
+    hideBtn.image = textImg(imgName: "eye.slash.fill", text: "隐藏")
+    hideBtn.backgroundColor =  UIColor(colorHex: 0xa4a4a4)
+    
+    let deleteBtn = UIContextualAction(style: .normal, title: nil) { (action, view, completion) in
+        dataList.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
+        completion(false)
+    }
+    deleteBtn.image = textImg(imgName: "trash.fill", text: "删除")
+    deleteBtn.backgroundColor =  UIColor(colorHex: 0xEB4B35)
+    
+    let noticeBtn = UIContextualAction(style: .normal, title: nil) { (action, view, completion) in
+        dataList[indexPath.row].isNotice = !dataList[indexPath.row].isNotice
+        completion(false)
+    }
+    if (dataList[indexPath.row].isNotice){
+        noticeBtn.image = textImg(imgName: "speaker.wave.3.fill", text: "关闭通知")
+    }else{
+        noticeBtn.image = textImg(imgName: "speaker.slash.fill", text: "开启通知")
+    }
+    noticeBtn.backgroundColor =  UIColor(colorHex: 0xE49E4C)
+    
+    let config = UISwipeActionsConfiguration(actions: [deleteBtn,hideBtn,noticeBtn])
+    config.performsFirstActionWithFullSwipe = false
+    
+    return config
+}
+
+func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -&gt; UISwipeActionsConfiguration? {
+    let unPinBtn = UIContextualAction(style: .normal, title: nil) { (action, view, completion) in
+        print("Just Swiped Added", action)
+        completion(false)
+        dataList[indexPath.row].isPin = !dataList[indexPath.row].isPin
+        dataList.sort{$0.isPin &amp;&amp; !$1.isPin}
+        tableView.reloadData()
+    }
+    if (dataList[indexPath.row].isPin){
+        unPinBtn.image = textImg(imgName: "pin.slash.fill", text: "解除置顶")
+    }else{
+        unPinBtn.image = textImg(imgName: "pin.fill", text: "消息置顶")
+    }
+    unPinBtn.backgroundColor =  UIColor(colorHex: 0x5AC63A)
+    
+    let config = UISwipeActionsConfiguration(actions: [unPinBtn])
+    config.performsFirstActionWithFullSwipe = false
+    
+    return config
+}
+
+@available(iOS 10.0, *)
+private func textImg(imgName: String, text: String) -&gt; UIImage? {
+    let label = UILabel()
+    label.font = UIFont.systemFont(ofSize: 12)
+    label.textColor = .white
+    label.text = text
+    return addLabelToImage(image: UIImage(systemName: imgName)!, label: label)
+}
+@available(iOS 10.0, *)
+private func addLabelToImage(image: UIImage, label: UILabel) -&gt; UIImage? {
+    let cView = UIView()
+    cView.frame = CGRect(x: 0, y: 0, width: 74, height: 76)
+    let imageView = UIImageView(frame: CGRect(x: 17, y: 9, width: 40, height: 40))
+    imageView.contentMode = .scaleAspectFit
+    imageView.image = image
+    imageView.tintColor = .white
+    cView.addSubview(imageView)
+    
+    label.textAlignment = .center
+    cView.addSubview(label)
+    label.frame = CGRect(x: 0, y: 52, width: 74, height: 20)
+    let renderer = UIGraphicsImageRenderer(bounds: cView.bounds)
+    
+    let image = renderer.image { rendererContext in
+        cView.layer.render(in: rendererContext.cgContext)
+    }
+    return image
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>3EAB6D53-0DA9-40CA-80C5-928DC0F79A53</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>tableviewswipactions</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

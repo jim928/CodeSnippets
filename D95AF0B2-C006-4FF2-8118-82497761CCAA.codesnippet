@@ -12,11 +12,10 @@
 	<string>extension String {
     func subString(from: Int, length:Int) -&gt; String {
         let startIndex = self.index(self.startIndex, offsetBy: from)
-        let endIndex = self.index(self.startIndex, offsetBy: from + length)
+        let endIndex = self.index(self.startIndex, offsetBy: from + length - 1)
         return String(self[startIndex...endIndex])
     }
-}
-</string>
+}</string>
 	<key>IDECodeSnippetIdentifier</key>
 	<string>D95AF0B2-C006-4FF2-8118-82497761CCAA</string>
 	<key>IDECodeSnippetLanguage</key>

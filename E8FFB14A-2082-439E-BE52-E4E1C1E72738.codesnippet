@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>tableviewindex</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>import UIKit
+
+class ContactVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
+    
+    var tableView = UITableView()
+    var headerList = userList.map { $0.name.subString(from: 0, length: 1)}.uniqued().sorted()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        self.navigationItem.title = "联系人";
+        
+        tableView = UITableView()
+        self.view.addSubview(tableView)
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.register(ContactCell.self, forCellReuseIdentifier: "ContactCell")
+        tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.sectionHeaderHeight = 30
+        tableView.sectionFooterHeight = 0.01
+        tableView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        if #available(iOS 15.0, *){
+            tableView.sectionHeaderTopPadding = 0
+        }
+        
+    }
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -&gt; Int {
+        let list = userList.filter { user in
+            user.name.hasPrefix(headerList[section])
+        }
+        return list.count
+    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -&gt; CGFloat {
+        return 50
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -&gt; UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath) as! ContactCell
+        let list = userList.filter { user in
+            user.name.hasPrefix(headerList[indexPath.section])
+        }
+        cell.initWith(model: list[indexPath.row])
+        return cell
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
+    func sectionIndexTitles(for tableView: UITableView) -&gt; [String]? {
+        return headerList
+    }
+    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -&gt; Int {
+        var tpIndex:Int = 0
+        for character in headerList {
+            if character == title {
+                return tpIndex
+            }
+            tpIndex += 1
+        }
+        return 0
+    }
+    func numberOfSections(in tableView: UITableView) -&gt; Int {
+        return headerList.count
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -&gt; String? {
+        return headerList[section]
+    }
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        view.tintColor = UIColor(colorHex: 0xf3f3f3)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -&gt; CGFloat {
+        return 0.01
+    }
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -&gt; UIView? {
+        return nil
+    }
+   
+}
+
+class ContactCell: UITableViewCell {
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        buildViews()
+    }
+    
+    var avatar = UIImageView()
+    var titleLabel = UILabel()
+    var desLabel = UILabel()
+    var line = UIView()
+    func buildViews() {
+        contentView.addSubview(avatar)
+        avatar.snp.makeConstraints { make in
+            make.width.height.equalTo(40)
+            make.centerY.equalToSuperview()
+            make.left.equalToSuperview().offset(16)
+        }
+        
+        contentView.addSubview(titleLabel)
+        titleLabel.font = UIFont.systemFont(ofSize: 16)
+        titleLabel.textColor = UIColor(colorHex: 0x121212)
+        titleLabel.snp.makeConstraints { make in
+            make.left.equalTo(avatar.snp.right).offset(12)
+            make.top.equalToSuperview().offset(3.5)
+        }
+        
+        contentView.addSubview(desLabel)
+        desLabel.font = UIFont.systemFont(ofSize: 12)
+        desLabel.textColor = UIColor(colorHex: 0x121212).withAlphaComponent(0.48)
+        desLabel.snp.makeConstraints { make in
+            make.left.equalTo(avatar.snp.right).offset(12)
+            make.top.equalToSuperview().offset(30)
+        }
+        
+        contentView.addSubview(line)
+        line.backgroundColor = UIColor(colorHex: 0x121212).withAlphaComponent(0.2)
+        line.snp.makeConstraints { make in
+            make.left.equalTo(titleLabel)
+            make.height.equalTo(0.5)
+            make.bottom.right.equalToSuperview()
+        }
+    }
+    
+    func initWith(model:User){
+        avatar.image = UIImage(named: model.avatar)
+        titleLabel.text = model.name
+        desLabel.text = model.onlineDes
+        desLabel.textColor = model.isOnline ? UIColor(colorHex: 0x007AFF) : UIColor(colorHex: 0x121212).withAlphaComponent(0.48)
+    }
+}
+
+class User{
+    var id: Int = 0
+    var name: String = ""
+    var avatar: String = ""
+    
+    init(id: Int, name: String, avatar: String) {
+        self.id = id
+        self.name = name
+        self.avatar = avatar
+    }
+    
+    var onlineDes:String {
+        return "在线"
+    }
+    var isOnline:Bool {
+        return id &lt; 3
+    }
+}
+
+
+var userList = [
+    User(id: 0, name: "Aie Qi", avatar: "im-ab-7"),
+    User(id: 1, name: "payoay", avatar: "im-ab-8"),
+    User(id: 2, name: "Elder", avatar: "im-ab-6"),
+    User(id: 3, name: "Jim Mo", avatar: "im-ab-4"),
+    User(id: 4, name: "Lao Jiu", avatar: "im-ab-6"),
+    User(id: 5, name: "Nancy", avatar: "im-ab-4"),
+    User(id: 6, name: "Bob", avatar: "im-ab-6"),
+    User(id: 7, name: "Arish", avatar: "im-ab-4"),
+    User(id: 8, name: "Soap", avatar: "im-ab-6"),
+    User(id: 9, name: "Alen Bob", avatar: "im-ab-4"),
+    User(id: 10, name: "Base Us", avatar: "im-ab-6"),
+    User(id: 11, name: "Super Man", avatar: "im-ab-4"),
+]
+
+extension Int {
+    var name : String {
+        let user = userList.first { user in
+            return user.id == self
+        } ?? User(id: 0, name: "", avatar: "")
+        return user.name
+    }
+    var avatar : String {
+        let user = userList.first { user in
+            return user.id == self
+        } ?? User(id: 0, name: "", avatar: "")
+        return user.avatar
+    }
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>E8FFB14A-2082-439E-BE52-E4E1C1E72738</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string>索引实现</string>
+	<key>IDECodeSnippetTitle</key>
+	<string>tableviewindex</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
