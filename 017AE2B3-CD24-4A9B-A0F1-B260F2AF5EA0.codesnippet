@@ -3,24 +3,24 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>label</string>
+	<string>stringtodic</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>let &lt;#label#&gt; = UILabel()
-&lt;#label#&gt;.font = UIFont.systemFont(ofSize: &lt;#T##CGFloat#&gt;)
-&lt;#label#&gt;.textColor = &lt;#color#&gt;
-&lt;#label#&gt;.text = &lt;#code#&gt;</string>
+	<string>        NSString *jsonString = @"{\"ID\":{\"Content\":268,\"type\":\"text\"},\"ContractTemplateID\":{\"Content\":65,\"type\":\"text\"}}";
+        NSData *data = [jsonString dataUsingEncoding:NSUTF8StringEncoding];
+        id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
+</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>1917DFC3-5034-4A9C-A987-43540771B309</string>
+	<string>017AE2B3-CD24-4A9B-A0F1-B260F2AF5EA0</string>
 	<key>IDECodeSnippetLanguage</key>
-	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
 	<key>IDECodeSnippetSummary</key>
 	<string></string>
 	<key>IDECodeSnippetTitle</key>
-	<string>labelcreate</string>
+	<string>NSString转json字典</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

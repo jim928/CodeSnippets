@@ -3,24 +3,25 @@
 <plist version="1.0">
 <dict>
 	<key>IDECodeSnippetCompletionPrefix</key>
-	<string>label</string>
+	<string>attr</string>
 	<key>IDECodeSnippetCompletionScopes</key>
 	<array>
 		<string>All</string>
 	</array>
 	<key>IDECodeSnippetContents</key>
-	<string>let &lt;#label#&gt; = UILabel()
-&lt;#label#&gt;.font = UIFont.systemFont(ofSize: &lt;#T##CGFloat#&gt;)
-&lt;#label#&gt;.textColor = &lt;#color#&gt;
-&lt;#label#&gt;.text = &lt;#code#&gt;</string>
+	<string>NSAttributedString(string: data.content,attributes: [
+            NSAttributedString.Key.font:UIFont.systemFont(ofSize: 14),
+            NSAttributedString.Key.foregroundColor:UIColor.black.withAlphaComponent(0.48),
+            
+        ])</string>
 	<key>IDECodeSnippetIdentifier</key>
-	<string>1917DFC3-5034-4A9C-A987-43540771B309</string>
+	<string>8C3BB17F-FD11-4CAE-B305-FE53CD4FC66A</string>
 	<key>IDECodeSnippetLanguage</key>
 	<string>Xcode.SourceCodeLanguage.Swift</string>
 	<key>IDECodeSnippetSummary</key>
 	<string></string>
 	<key>IDECodeSnippetTitle</key>
-	<string>labelcreate</string>
+	<string>attributedstring</string>
 	<key>IDECodeSnippetUserSnippet</key>
 	<true/>
 	<key>IDECodeSnippetVersion</key>

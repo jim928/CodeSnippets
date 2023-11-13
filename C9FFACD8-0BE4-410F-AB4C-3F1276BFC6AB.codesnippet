@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>menu</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>    if #available(iOS 14.0, *) {
+        let addNewItem = UIBarButtonItem(systemItem: .add, primaryAction: nil, menu: createMenuIOS13())
+        navigationItem.rightBarButtonItem = addNewItem
+    } else {
+        // Fallback on earlier versions
+    }
+let showMenuButton = UIButton()
+showMenuButton.menu = createMenuIOS13()
+showMenuButton.showsMenuAsPrimaryAction = true
+    func createMenuIOS13() -&gt; UIMenu {
+        let favorite = UIAction(title: "Favorite", image: UIImage(systemName: "heart.fill")) { _ in
+            print("favorite")
+        }
+        let share = UIAction(title: "Share", image: UIImage(systemName: "square.and.arrow.up.fill")) { _ in
+            print("share")
+        }
+        let delete = UIAction(title: "Delete", image: UIImage(systemName: "trash.fill"), attributes: [.destructive]) { _ in
+            print("delete")
+        }
+        let menuActions = [favorite, share, delete]
+        let addNewMenu = UIMenu(
+            title: "",
+            children: menuActions)
+        return addNewMenu
+    }
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>C9FFACD8-0BE4-410F-AB4C-3F1276BFC6AB</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>UIMenu举例</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

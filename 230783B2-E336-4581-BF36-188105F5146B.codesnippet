@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>navfullpageslideback</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>import Foundation
+import UIKit
+
+fileprivate var slideEnabledKey = "slideEnabled"
+
+extension UINavigationController {
+    /// should slide to back. default is true
+    var slideEnabled: Bool {
+        set {
+            objc_setAssociatedObject(self, &amp;slideEnabledKey, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_ASSIGN)
+        }
+        get {
+            if let rs = objc_getAssociatedObject(self, &amp;slideEnabledKey) as? Bool {
+                return rs
+            }
+            return true
+        }
+    }
+}
+
+/// the navigationController enabled full screen slide to back
+class FullNavigationController: UINavigationController, UIGestureRecognizerDelegate {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fullSlide()
+    }
+
+    func fullSlide() {
+        guard let recognizer = interactivePopGestureRecognizer else {
+            return
+        }
+        guard let recognizerView = recognizer.view else {
+            return
+        }
+
+        let targets = recognizer.value(forKey: "_targets") as? [NSObject]
+        guard let targetObjc = targets?.first else {
+            return
+        }
+
+        guard let target = targetObjc.value(forKey: "target") else {
+            return
+        }
+        let action = Selector(("handleNavigationTransition:"))
+        let fullRecognizer = UIPanGestureRecognizer()
+        fullRecognizer.delegate = self
+        recognizerView.addGestureRecognizer(fullRecognizer)
+        fullRecognizer.addTarget(target, action: action)
+    }
+
+    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+        if viewControllers.count &gt; 0 {
+            viewController.hidesBottomBarWhenPushed = true
+
+        }
+        super.pushViewController(viewController, animated: animated)
+    }
+
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -&gt; Bool {
+        return slideEnabled &amp;&amp; children.count &gt; 1
+    }
+}
+</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>230783B2-E336-4581-BF36-188105F5146B</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>nav页面全屏侧滑返回实现</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>

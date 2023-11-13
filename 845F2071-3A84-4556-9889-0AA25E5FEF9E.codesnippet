@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>network</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//import Network
+let monitor = NWPathMonitor()
+//monitor.cancel()//取消监听
+// 检查网络连接
+func checkNetwork() {
+    monitor.pathUpdateHandler = { [weak self] path in
+        DispatchQueue.main.async {
+            if path.status == .satisfied {
+                print("网络已连接")
+            } else {
+                //询问用户是否前往设置中开启网络
+                let alertController = UIAlertController(title: "网络错误", message: "请授予应用程序网络权限", preferredStyle: .alert)
+                let settingsAction = UIAlertAction(title: "设置", style: .default) { (_) -&gt; Void in
+                    guard let settingsUrl = URL(string: UIApplication.openSettingsURLString) else {
+                        return
+                    }
+
+                    if UIApplication.shared.canOpenURL(settingsUrl) {
+                        UIApplication.shared.open(settingsUrl, completionHandler: { (success) in
+                            print("设置打开: \(success)")
+                        })
+                    }
+                }
+
+                let cancelAction = UIAlertAction(title: "取消", style: .default, handler: nil)
+                alertController.addAction(cancelAction)
+                alertController.addAction(settingsAction)
+                self?.present(alertController, animated: true, completion: nil)
+            }
+        }
+    }
+
+    let queue = DispatchQueue(label: "Monitor")
+    monitor.start(queue: queue)
+}</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>845F2071-3A84-4556-9889-0AA25E5FEF9E</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>请求网络权限的处理</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>

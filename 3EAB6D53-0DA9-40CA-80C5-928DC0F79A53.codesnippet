@@ -38,7 +38,7 @@
     noticeBtn.backgroundColor =  UIColor(colorHex: 0xE49E4C)
     
     let config = UISwipeActionsConfiguration(actions: [deleteBtn,hideBtn,noticeBtn])
-    config.performsFirstActionWithFullSwipe = false
+    config.performsFirstActionWithFullSwipe = true
     
     return config
 }
@@ -59,7 +59,7 @@ func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowA
     unPinBtn.backgroundColor =  UIColor(colorHex: 0x5AC63A)
     
     let config = UISwipeActionsConfiguration(actions: [unPinBtn])
-    config.performsFirstActionWithFullSwipe = false
+    config.performsFirstActionWithFullSwipe = true
     
     return config
 }

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>db</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>    //Build Phases中引入sqlite3.0.tbd
+    NSString *path = [NSString stringWithFormat:@"%@/123343.db",[NSHomeDirectory() stringByAppendingPathComponent:@"Documents"]];
+
+    static sqlite3 *db;
+    // 打开数据库
+    if (sqlite3_open(path.UTF8String, &amp;db) == SQLITE_OK) {
+        NSLog(@"打开成功");
+    }else{
+        NSLog(@"打开失败");
+    }
+    // 创建表格
+    NSString *sql = @"create table if not exists t_contact (id integer primary key autoincrement,name text,phone text);";
+    char *error;
+    
+    sqlite3_exec(db, sql.UTF8String, NULL, NULL, &amp;error);
+    
+    if (error) {
+        NSLog(@"创建表格失败");
+    }else{
+        NSLog(@"创建表格成功");
+    }</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>202240D2-1AFD-410B-A88D-8D274A95EF34</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Objective-C</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>创建数据库文件</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>0</integer>
+</dict>
+</plist>
