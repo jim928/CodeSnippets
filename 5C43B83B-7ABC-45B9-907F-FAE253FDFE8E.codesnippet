@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDECodeSnippetCompletionPrefix</key>
+	<string>addfiletoxcodewithruby</string>
+	<key>IDECodeSnippetCompletionScopes</key>
+	<array>
+		<string>All</string>
+	</array>
+	<key>IDECodeSnippetContents</key>
+	<string>//ruby 命令添加文件到xcode工程
+require 'xcodeproj'
+
+def addfiles (direc, current_group, main_target)
+    Dir.glob(direc) do |item|
+        next if item == '.' or item == '.DS_Store'
+
+                if File.directory?(item)
+            new_folder = File.basename(item)
+            created_group = current_group.new_group(new_folder)
+            addfiles("#{item}/*", created_group, main_target)
+        else
+          i = current_group.new_file(item)
+          if item.include? ".m"
+              main_target.add_file_references([i])
+          end
+        end
+    end
+end
+
+project_file = 'myproj' + '.xcodeproj'
+project = Xcodeproj::Project.open(project_file)
+
+kit_group = project.new_group('UIKIT')
+data_group = project.new_group('DATAKIT')
+ex_group = project.new_group('LIBKIT')
+
+uipath = '/Git/UIKit'
+datapath = '/Git/DataServicesKit'
+expath = '/Git/External'
+
+main_target = project.targets.first
+
+addfiles("#{uipath}/*", kit_group, main_target)
+addfiles("#{datapath}/*", data_group, main_target)
+addfiles("#{expath}/*", ex_group, main_target)
+
+project.save(project_file)</string>
+	<key>IDECodeSnippetIdentifier</key>
+	<string>5C43B83B-7ABC-45B9-907F-FAE253FDFE8E</string>
+	<key>IDECodeSnippetLanguage</key>
+	<string>Xcode.SourceCodeLanguage.Swift</string>
+	<key>IDECodeSnippetSummary</key>
+	<string></string>
+	<key>IDECodeSnippetTitle</key>
+	<string>添加文件到xcode工程</string>
+	<key>IDECodeSnippetUserSnippet</key>
+	<true/>
+	<key>IDECodeSnippetVersion</key>
+	<integer>2</integer>
+</dict>
+</plist>
